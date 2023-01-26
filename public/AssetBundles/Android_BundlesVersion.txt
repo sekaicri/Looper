@@ -1,0 +1,8 @@
+{
+    "bundles": [
+        {
+            "name": "scenes/isla",
+            "sVersion": "30e1ea9f149d249099195ae0884b628a"
+        }
+    ]
+}
