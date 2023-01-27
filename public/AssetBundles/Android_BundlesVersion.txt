@@ -2,7 +2,47 @@
     "bundles": [
         {
             "name": "scenes/isla",
-            "sVersion": "30e1ea9f149d249099195ae0884b628a"
+            "sVersion": "a4237d6af9649fb4d6fa6d86120cee4e"
+        },
+        {
+            "name": "shared/dancefloor",
+            "sVersion": "15f0e0e33f8c9c3ef2b9692823b05eea"
+        },
+        {
+            "name": "shared/jetski1",
+            "sVersion": "ed9be175a00eb4008c2ac3ac3b976de1"
+        },
+        {
+            "name": "shared/jetski2",
+            "sVersion": "fce64c20dadad2aa5315ecee91f0cc66"
+        },
+        {
+            "name": "shared/jetski3",
+            "sVersion": "172a86ea8acbdda733bd39db27855610"
+        },
+        {
+            "name": "shared/newmaterial",
+            "sVersion": "50d87df77aa53787934216c44b91ef56"
+        },
+        {
+            "name": "shared/reflectionprobe0",
+            "sVersion": "337e5ce07e5e87271eb0f9710c1e493b"
+        },
+        {
+            "name": "shared/reflectionprobe1",
+            "sVersion": "0710ca3283a24990a397f1ad1f483a49"
+        },
+        {
+            "name": "shared/reflectionprobe2",
+            "sVersion": "d63c09101287837ff8e3b379884bf296"
+        },
+        {
+            "name": "shared/tenistnet",
+            "sVersion": "5df9aa1aa9ea8f161daeded596490be9"
+        },
+        {
+            "name": "shared/toallas",
+            "sVersion": "43d935fda2942a0c1f00b49304c30d21"
         }
     ]
 }

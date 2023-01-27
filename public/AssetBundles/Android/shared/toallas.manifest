@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 2896589968
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 43d935fda2942a0c1f00b49304c30d21
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 939e20ecac0e95a3f7c5cfb3e57acb1d
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/_MATERIALS/ISLA/Toallas.mat
+Dependencies: []

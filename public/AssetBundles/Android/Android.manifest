@@ -1,7 +1,47 @@
 ManifestFileVersion: 0
-CRC: 423232378
+CRC: 3615418430
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: scenes/isla
+      Dependencies:
+        Dependency_0: shared/dancefloor
+        Dependency_1: shared/jetski1
+        Dependency_2: shared/jetski2
+        Dependency_3: shared/jetski3
+        Dependency_4: shared/newmaterial
+        Dependency_5: shared/tenistnet
+        Dependency_6: shared/toallas
+        Dependency_7: shared/reflectionprobe0
+        Dependency_8: shared/reflectionprobe1
+        Dependency_9: shared/reflectionprobe2
+    Info_1:
+      Name: shared/dancefloor
+      Dependencies: {}
+    Info_2:
+      Name: shared/jetski1
+      Dependencies: {}
+    Info_3:
+      Name: shared/jetski2
+      Dependencies: {}
+    Info_4:
+      Name: shared/jetski3
+      Dependencies: {}
+    Info_5:
+      Name: shared/newmaterial
+      Dependencies: {}
+    Info_6:
+      Name: shared/tenistnet
+      Dependencies: {}
+    Info_7:
+      Name: shared/toallas
+      Dependencies: {}
+    Info_8:
+      Name: shared/reflectionprobe0
+      Dependencies: {}
+    Info_9:
+      Name: shared/reflectionprobe1
+      Dependencies: {}
+    Info_10:
+      Name: shared/reflectionprobe2
       Dependencies: {}
