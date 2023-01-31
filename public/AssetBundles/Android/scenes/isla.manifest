@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2157007280
+CRC: 757887069
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: a4237d6af9649fb4d6fa6d86120cee4e
+    Hash: 94ce4c3d960a0907e94a558b5567d4c0
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8769b91f6d6e556de651fc01549644b3
@@ -428,14 +428,4 @@ ClassTypes:
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/_SCENES/Isla.unity
-Dependencies:
-- C:/Users/Usuario/Documents/UnityProject/NewLooperVR/LooperVR/AssetBundles/Android/shared/dancefloor
-- C:/Users/Usuario/Documents/UnityProject/NewLooperVR/LooperVR/AssetBundles/Android/shared/jetski1
-- C:/Users/Usuario/Documents/UnityProject/NewLooperVR/LooperVR/AssetBundles/Android/shared/jetski2
-- C:/Users/Usuario/Documents/UnityProject/NewLooperVR/LooperVR/AssetBundles/Android/shared/jetski3
-- C:/Users/Usuario/Documents/UnityProject/NewLooperVR/LooperVR/AssetBundles/Android/shared/newmaterial
-- C:/Users/Usuario/Documents/UnityProject/NewLooperVR/LooperVR/AssetBundles/Android/shared/reflectionprobe0
-- C:/Users/Usuario/Documents/UnityProject/NewLooperVR/LooperVR/AssetBundles/Android/shared/reflectionprobe1
-- C:/Users/Usuario/Documents/UnityProject/NewLooperVR/LooperVR/AssetBundles/Android/shared/reflectionprobe2
-- C:/Users/Usuario/Documents/UnityProject/NewLooperVR/LooperVR/AssetBundles/Android/shared/tenistnet
-- C:/Users/Usuario/Documents/UnityProject/NewLooperVR/LooperVR/AssetBundles/Android/shared/toallas
+Dependencies: []
