@@ -2,27 +2,31 @@
     "bundles": [
         {
             "name": "scenes/golf",
-            "sVersion": "acf73a7e34e5880bdb2e425f16be9a15"
+            "sVersion": "5eaa7e40995f11a2d564cf92564f62ff"
         },
         {
             "name": "scenes/isla",
-            "sVersion": "94ce4c3d960a0907e94a558b5567d4c0"
+            "sVersion": "0c6f29da0afa9214fb9c31b15fbd3053"
         },
         {
             "name": "scenes/liberty",
-            "sVersion": "01eaa110ae65999f738a192b843bef2f"
+            "sVersion": "42d8559d7e325617abc01ccb074a2fbb"
+        },
+        {
+            "name": "scenes/museo",
+            "sVersion": "674cf72e307e6a49147e02de946008ee"
         },
         {
             "name": "scenes/plazav2",
-            "sVersion": "8f81207e420bbe6332886faf19aa4282"
+            "sVersion": "5d9393a99496ad4a9b268cab53fb7adb"
         },
         {
             "name": "scenes/theatre",
-            "sVersion": "e5b2f49ea28aac163e05e367debb656a"
+            "sVersion": "f58528edded937984665a00138da7a5f"
         },
         {
             "name": "scenes/torres",
-            "sVersion": "552823b583c4ef010800107f8b0df083"
+            "sVersion": "237d9777dfcda70bb480712512e8ed45"
         }
     ]
 }
