@@ -21,11 +21,27 @@ class EventsController extends Controller
     public function CreateEvent(EventsRequest $request)
     {
         $code = $this->generateUniqueCode();
-        $events = Events::create([
-            'name' => $request['name'],
-            'fecha' => $request['fecha'],
-            'code' => $code,
-        ]);
+        $user = $request->user_id;
+        $description = $request->description;
+
+        if ($user != null) {
+
+            $events = Events::create([
+                'name' => $request['name'],
+                'fecha' => $request['fecha'],
+                'code' => $code,
+                'user_id' => $user,
+                'description' => $description,
+
+            ]);
+        } else {
+            $events = Events::create([
+                'name' => $request['name'],
+                'fecha' => $request['fecha'],
+                'code' => $code,
+            ]);
+        }
+
 
         return response()->json([
             'success'   => true,

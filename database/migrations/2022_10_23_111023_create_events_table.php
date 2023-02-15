@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('code');
             $table->dateTime('fecha');
+            $table->string('description')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

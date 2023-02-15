@@ -83,12 +83,15 @@ class AuthController extends Controller
      $holi1 = $this-> Requests($user); */
 
    $creation = DB::SELECT('(SELECT * FROM clothesusers al where user_id = ' .  $user->id . ')');
+   $rooms = DB::SELECT('(SELECT * FROM events al where user_id = ' .  $user->id . ')');
 
         return response()->json([
             'success'   => true,
             'message'   => 'Login exitoso',
             'user'      => $user,
-            'clothes' =>$creation
+            'clothes' =>$creation,
+            'rooms' =>$rooms,
+
             /*  'friends'    => $holi,
             'requests'=> $holi1*/
 

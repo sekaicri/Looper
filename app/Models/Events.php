@@ -13,5 +13,7 @@ class Events extends Model
         'name',
         'code',
         'fecha',
+        'description',
+        'user_id',
     ];
 }
