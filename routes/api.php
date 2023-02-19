@@ -41,11 +41,11 @@ Route::post('/buyclothes', [clothesController::class,'buyClothes']);
 Route::post('/showcodesclothes', [clothesController::class,'show']);
 Route::post('/showclothes', [clothesController::class,'showClothes']);
 
-Route::post('/createobject', [clothesController::class,'objectscene']);
-Route::post('/createdcodesobject', [clothesController::class,'objectscene']);
-Route::post('/buyobject', [clothesController::class,'objectscene']);
-Route::post('/showcodesobject', [clothesController::class,'objectscene']);
-Route::post('/showobject', [clothesController::class,'objectscene']);
+Route::post('/createobject', [objectscene::class,'create']);
+Route::post('/createdcodesobject', [objectscene::class,'CreatedCodeclothes']);
+Route::post('/buyobject', [objectscene::class,'buyClothes']);
+Route::post('/showcodesobject', [objectscene::class,'show']);
+Route::post('/showobject', [objectscene::class,'showClothes']);
 
 
 
