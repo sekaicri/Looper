@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('objects_scenes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->TEXT('imagen');
+            $table->TEXT('imagen')->nullable();
             $table->timestamps();
         });
     }
