@@ -25,6 +25,7 @@ class objectscene extends Controller
     {
         $events = objectsScene::create([
             'name' => $request['name'],
+            'imagen' => $request['imagen']
         ]);
 
         return response()->json([
