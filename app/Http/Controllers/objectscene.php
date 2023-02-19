@@ -99,7 +99,7 @@ class objectscene extends Controller
   
     public function show(Request $request)
     {
-        $creation = DB::SELECT('(SELECT * FROM objectsSceneEvent al where events_id = ' . $request->events_id . ')');
+        $creation = DB::SELECT('(SELECT * FROM objects_scene_events al where events_id = ' . $request->events_id . ')');
         return response()->json([
             'success'   => true,
             'message'   => 'estos son los codigos',
