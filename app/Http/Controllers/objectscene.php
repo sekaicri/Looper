@@ -8,6 +8,9 @@ use App\Http\Requests\clothesRequest;
 use App\Models\objectsScene;
 use App\Models\objectsSceneEvent;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Exception;
+
 
 class objectscene extends Controller
 {
@@ -140,4 +143,42 @@ class objectscene extends Controller
     {
         //
     }
+
+    public function registerImagen(Request $request)
+    {
+        try {
+            $filename = "";
+            if ($request->hasFile('imagen')) {
+                $uniqid = uniqid();
+                $file = $request->file('imagen');
+                $filename = $uniqid . '.' . $file->getClientOriginalExtension();
+                $file->storeAs($request->project_id, $filename, 'public');
+                // $filename = $request->file('imagen')->store('posts','public');
+            } else {
+                $filename = Null;
+            }
+            $filename = 'http://45.132.240.186/storage/'.$filename;
+            // inicio de transaccion
+            DB::beginTransaction();
+
+            // confirmar transaccion
+            DB::commit();
+            return response()->json([
+                'success'   => true,
+                'message'   => 'Registro exitoso',
+                'link'      => $filename
+            ]);
+        } catch (Exception $e) {
+            Log::error($e->getMessage());
+            DB::rollBack();
+            return response()->json([
+                'success' => false,
+                'message' => 'Error En La Generación De La Solicitud'
+            ], 500, [], JSON_PRETTY_PRINT);
+        }
+    }
+
+
+
+
 }

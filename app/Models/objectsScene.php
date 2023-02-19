@@ -10,5 +10,6 @@ class objectsScene extends Model
     use HasFactory;
     protected $fillable = [
         'name',
+        'imagen',
     ];
 }
