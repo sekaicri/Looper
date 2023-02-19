@@ -59,7 +59,7 @@ class objectscene extends Controller
         for ($i = 0; $i < $request['num']; $i++) {
             $code = $this->generateUniqueCode();
             $events = objectsSceneEvent::create([
-                'objects_scenes' => $request['objects_scenes_id'],
+                'objects_scenes_id' => $request['objects_scenes_id'],
                 'code' => $code,
             ]);
             $mynames->push($events);
