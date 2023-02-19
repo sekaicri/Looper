@@ -46,6 +46,7 @@ Route::post('/createdcodesobject', [objectscene::class,'CreatedCodeclothes']);
 Route::post('/buyobject', [objectscene::class,'buyClothes']);
 Route::post('/showcodesobject', [objectscene::class,'show']);
 Route::post('/showobject', [objectscene::class,'showClothes']);
+Route::post('/showobjectscena', [objectscene::class,'showObjects']);
 
 
 
