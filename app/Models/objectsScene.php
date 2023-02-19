@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class objectsScene extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'name',
+    ];
 }
