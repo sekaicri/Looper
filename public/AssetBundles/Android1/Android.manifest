@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 949042957
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: scenes/isla
+      Dependencies: {}
+    Info_1:
+      Name: scenes/plazav2
+      Dependencies: {}
+    Info_2:
+      Name: scenes/theatre
+      Dependencies: {}
+    Info_3:
+      Name: scenes/liberty
+      Dependencies: {}
+    Info_4:
+      Name: scenes/torres
+      Dependencies: {}

@@ -1,0 +1,24 @@
+{
+    "bundles": [
+        {
+            "name": "scenes/isla",
+            "sVersion": "ccee9656c62047ae4179b235a8a68abb"
+        },
+        {
+            "name": "scenes/liberty",
+            "sVersion": "9fcd613cc3ba37f4c683e7db9ad6ce32"
+        },
+        {
+            "name": "scenes/plazav2",
+            "sVersion": "eef4161b39af5a12fa1e483ba04f31bf"
+        },
+        {
+            "name": "scenes/theatre",
+            "sVersion": "60196c000b2038efaac95211f69ed233"
+        },
+        {
+            "name": "scenes/torres",
+            "sVersion": "bbc7b3a8f7caa579e0bc34f705e2edee"
+        }
+    ]
+}
