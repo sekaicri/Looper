@@ -9,6 +9,7 @@ use App\Http\Controllers\EventsController;
 use App\Http\Controllers\FriendsRequests;
 use App\Http\Controllers\clothesController;
 use App\Http\Controllers\objectscene;
+use App\Http\Controllers\VideoController;
 
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Database\Console\Migrations\ResetCommand;
@@ -49,6 +50,7 @@ Route::post('/showobject', [objectscene::class,'showClothes']);
 Route::post('/showobjectscena', [objectscene::class,'showObjects']);
 Route::post('/registerImagen', [objectscene::class,'registerImagen']);
 
+Route::post('/video', [VideoController::class,'show']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
