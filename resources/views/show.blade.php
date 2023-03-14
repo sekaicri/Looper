@@ -2,6 +2,6 @@
 
 @section('content')
     <div>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $id }}?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <iframe width="1920" height="1080" src="https://www.youtube.com/embed/{{ $id }}?autoplay=1" frameborder="0" allowfullscreen>></iframe>
     </div>
 @endsection
