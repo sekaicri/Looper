@@ -10,4 +10,5 @@ class VideoController extends Controller
     {
         return view('show', ['id' => $request->id]);
     }
+    
 }
