@@ -1,25 +1,19 @@
 ManifestFileVersion: 0
-CRC: 429792133
+CRC: 1938560206
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: scenes/isla
       Dependencies: {}
     Info_1:
-      Name: scenes/torres
+      Name: scenes/plazav2
       Dependencies: {}
     Info_2:
-      Name: scenes/plazav2
+      Name: scenes/theatre
       Dependencies: {}
     Info_3:
       Name: scenes/liberty
       Dependencies: {}
     Info_4:
-      Name: scenes/theatre
-      Dependencies: {}
-    Info_5:
-      Name: scenes/golf
-      Dependencies: {}
-    Info_6:
-      Name: scenes/museo
+      Name: scenes/torres
       Dependencies: {}
