@@ -2,7 +2,7 @@
     "bundles": [
         {
             "name": "scenes/isla",
-            "sVersion": "e5a2751bbf4a01c511aef8d249ec2ca6"
+            "sVersion": "0ad73eaf94ac42b3c6e4e7cdca57fce0"
         },
         {
             "name": "scenes/laperla1",
@@ -22,11 +22,11 @@
         },
         {
             "name": "scenes/theatre",
-            "sVersion": "0b3eb91867070dfcd5ba4a22f306394c"
+            "sVersion": "f550d47b48bfcd8f8cfe8eb06e04ae66"
         },
         {
             "name": "scenes/torres",
-            "sVersion": "1ff5d593b9488c8602dd9b9e86454d33"
-        }
+            "sVersion": "0c49b3c1430925520a3ef0f89c2e5e0f"
+        } 
     ]
 }
