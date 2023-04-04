@@ -6,11 +6,11 @@
         },
         {
             "name": "scenes/laperla1",
-            "sVersion": "2be916f03d234d14f22963457333682b"
+            "sVersion": "371516874f44b1830f45d3f26f15e192"
         },
         {
             "name": "scenes/laperla2",
-            "sVersion": "336ae1cbf8037d84ec8282c42dcb6b2d"
+            "sVersion": "f2a24e9463116516ef3dc5f2dec1c463"
         },
         {
             "name": "scenes/liberty",
