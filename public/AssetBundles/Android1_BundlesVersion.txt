@@ -6,7 +6,7 @@
         },
         {
             "name": "scenes/laperla1",
-            "sVersion": "c75beb732e4f6eceabf3f501a5a77a0e"
+            "sVersion": "c454591fddf3099297825df565cc5882"
         },
         {
             "name": "scenes/laperla2",
@@ -18,7 +18,7 @@
         },
         {
             "name": "scenes/plazav2",
-            "sVersion": "0c81f4ffb1f871fe71faac833cecde6b"
+            "sVersion": "67a915bde4c9bde1bf6d37986e6545c1"
         },
         {
             "name": "scenes/theatre",
