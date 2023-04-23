@@ -71,7 +71,7 @@ class AuthController extends Controller
 
      $user = User::where('email',$request['email'])->first();
      $ip = $request->ip();
-     $response = Http::get("http://api.ipstack.com/$ip?access_key=TU_CLAVE_DE_API");
+     $response = Http::get("http://api.ipstack.com/$ip?access_key=8b8a5f5ae0ef2c91234f7db580db8772");
      $location = $response->json();
      $pais = $location['country_name'];
  
