@@ -6,10 +6,9 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\RequestLogin;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Arr;
-use PHPUnit\Framework\Constraint\IsFalse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class AuthController extends Controller
 {
@@ -71,10 +70,16 @@ class AuthController extends Controller
     {
 
      $user = User::where('email',$request['email'])->first();
+     $ip = $request->ip();
+     $response = Http::get("http://api.ipstack.com/$ip?access_key=TU_CLAVE_DE_API");
+     $location = $response->json();
+     $pais = $location['country_name'];
+ 
      if(!$user||!Hash::check($request['password'], $user->password)){
         return response()->json([
             'success'   => true,
             'message'   => 'Los datos son incorrectos',
+            "country"   => $pais,
             'data'      => null
         ]);
      }
