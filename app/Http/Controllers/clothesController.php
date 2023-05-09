@@ -8,7 +8,7 @@ use App\Http\Requests\clothesRequest;
 use App\Models\clothes;
 use App\Models\clothesuser;
 use Illuminate\Support\Facades\DB;
-
+use Stevebauman\Location\Facades\Location;
 class clothesController extends Controller
 {
    
@@ -112,11 +112,13 @@ class clothesController extends Controller
     public function showClothes()
     {
         $creation = DB::SELECT('(SELECT * FROM clothes )');
+
         return response()->json([
             'success'   => true,
             'message'   => 'Lista de Ropa',
             'data'      => $creation 
         ]);
+      
     }
 
   

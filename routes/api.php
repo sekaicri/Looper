@@ -50,8 +50,12 @@ Route::post('/showobject', [objectscene::class,'showClothes']);
 Route::post('/showobjectscena', [objectscene::class,'showObjects']);
 Route::post('/registerImagen', [objectscene::class,'registerImagen']);
 
-Route::post('/video', [VideoController::class,'show']);
+Route::post('/saveString', [VideoController::class,'saveString']);
+Route::post('/updatevideo', [VideoController::class,'update']);
+Route::post('/searchvideo', [VideoController::class,'search']);
 
+Route::post('/saveGame', [GameController::class, 'store']);
+Route::post('/ScoreTop', [GameController::class, 'getTopScores']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
