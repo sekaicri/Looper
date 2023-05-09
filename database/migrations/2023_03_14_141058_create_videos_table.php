@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('url');
             $table->unsignedBigInteger('event_id');
-            $table->foreign('events_id')->references('id')->on('events');
+            $table->foreign('event_id')->references('id')->on('events');
 
         });
     }
