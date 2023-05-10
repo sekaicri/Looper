@@ -10,6 +10,7 @@ use App\Http\Controllers\FriendsRequests;
 use App\Http\Controllers\clothesController;
 use App\Http\Controllers\objectscene;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\GameController;
 
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Database\Console\Migrations\ResetCommand;
