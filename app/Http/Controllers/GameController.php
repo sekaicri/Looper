@@ -11,15 +11,16 @@ class GameController extends Controller
 {
     public function store(Request $request)
     {
+        // Verificar si los campos son nulos
+        if ($request->user_id === null || $request->name === null || $request->score === null) {
+            return response()->json(['error' => 'Los campos no pueden ser nulos'], 400);
+        }
+    
         $validatedData = $request->validate([
             'user_id' => 'required|integer',
             'name' => 'required',
             'score' => 'required',
         ]);
-    
-        if ($request->fails()) {
-            return response()->json(['error' => $request->errors()], 400);
-        }
     
         $game = Games::where('name', $validatedData['name'])
             ->where('user_id', $validatedData['user_id'])
