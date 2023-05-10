@@ -13,14 +13,18 @@ class GameController extends Controller
     {
         $validatedData = $request->validate([
             'user_id' => 'required|integer',
-            'name' => 'required|string',
-            'score' => 'required|numeric',
+            'name' => 'required',
+            'score' => 'required',
         ]);
-
+    
+        if ($request->fails()) {
+            return response()->json(['error' => $request->errors()], 400);
+        }
+    
         $game = Games::where('name', $validatedData['name'])
             ->where('user_id', $validatedData['user_id'])
             ->first();
-
+    
         if ($game) {
             if ($validatedData['score'] > $game->score) {
                 $game->score = $validatedData['score'];
@@ -33,7 +37,7 @@ class GameController extends Controller
             $game->score = $validatedData['score'];
             $game->save();
         }
-
+    
         return response()->json(['message' => 'Juego registrado/actualizado con éxito'], 200);
     }
 
