@@ -17,7 +17,7 @@ class ConsumerCodeController extends Controller
 
     $code = $request->input('code');
 
-    if (!$code) {
+    if ($code==null) {
         return response()->json([
             'error' => 'El campo code no puede estar vacío.',
         ], 400);
