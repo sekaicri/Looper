@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\eventscodes;
 use App\Models\ConsumerCode;
+use App\Models\Video;
+
 use Illuminate\Support\Facades\Validator;
+
 
 class ConsumerCodeController extends Controller
 {
@@ -34,6 +37,8 @@ class ConsumerCodeController extends Controller
     $code = $request->input('code');
 
     $eventCode = eventscodes::where('code', $code)->first();
+    $eventUrl = Video::where('event_id', $eventCode->event_id)->first();
+
     if (!$eventCode) {
         return response()->json([
             'message' => 'El código de evento no existe.',
@@ -55,6 +60,7 @@ class ConsumerCodeController extends Controller
     return response()->json([
         'message' => 'El registro se ha creado correctamente.',
         'event_id' => $eventCode->event_id,
+        'url' => $eventUrl->url
     ],200);
 }
 }

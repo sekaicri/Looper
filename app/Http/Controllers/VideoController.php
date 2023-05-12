@@ -16,7 +16,6 @@ class VideoController extends Controller
     {
         $user = Video::create([
             'url' => $request['url'],
-            'time' => $request['time'],
             'event_id' => $request['event_id'],
         ]);
 
@@ -30,7 +29,7 @@ class VideoController extends Controller
     
     public function update(Request $request)
     {
-        if ($request->has('id')) {
+        if ($request->has('event_id')) {
             $creation = Video::find($request->id);
 
             if ($creation) {
