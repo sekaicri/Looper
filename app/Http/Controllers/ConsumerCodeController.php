@@ -17,12 +17,12 @@ class ConsumerCodeController extends Controller
 
     $code = $request->input('code');
 
-    if (empty($code)) {
+    if (!$code) {
         return response()->json([
             'error' => 'El campo code no puede estar vacío.',
         ], 400);
     }
-    
+
     $eventCode = eventscodes::where('code', $code)->first();
     if (!$eventCode) {
         return response()->json([
