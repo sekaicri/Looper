@@ -11,6 +11,7 @@ use App\Http\Controllers\clothesController;
 use App\Http\Controllers\objectscene;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\ConsumerCodeController;
 
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Database\Console\Migrations\ResetCommand;
@@ -57,6 +58,8 @@ Route::post('/searchvideo', [VideoController::class,'search']);
 
 Route::post('/saveGame', [GameController::class, 'store']);
 Route::post('/ScoreTop', [GameController::class, 'getTopScores']);
+
+Route::post('/saveConsumerCode', [ConsumerCodeController::class, 'store']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
