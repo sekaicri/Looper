@@ -20,7 +20,7 @@ class ConsumerCodeController extends Controller
                 if (empty($value)) {
                     return response()->json([
                         'message' => 'El código de evento no existe.',
-                    ]); }
+                    ],400); }
             },
         ],
     ]);
@@ -37,15 +37,14 @@ class ConsumerCodeController extends Controller
     if (!$eventCode) {
         return response()->json([
             'message' => 'El código de evento no existe.',
-            'exists' => false,
-        ]);
+        ],400);
     }
 
     $existingConsumerCode = ConsumerCode::where('code', $code)->first();
     if ($existingConsumerCode) {
         return response()->json([
             'message' => 'El código ya esta en uso',
-        ]);
+        ],400);
     }
 
     // Crear el nuevo registro en ConsumerCode
@@ -56,6 +55,6 @@ class ConsumerCodeController extends Controller
     return response()->json([
         'message' => 'El registro se ha creado correctamente.',
         'event_id' => $eventCode->event_id,
-    ]);
+    ],200);
 }
 }
