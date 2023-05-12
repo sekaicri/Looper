@@ -6,22 +6,31 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\eventscodes;
 use App\Models\ConsumerCode;
+use Illuminate\Support\Facades\Validator;
 
 class ConsumerCodeController extends Controller
 {
     public function store(Request $request)
 {
-    $request->validate([
-        'code' => 'required',
+    $validator = Validator::make($request->all(), [
+        'code' => [
+            'required',
+            'present',
+            function ($attribute, $value, $fail) {
+                if (empty($value)) {
+                    $fail('El campo code no puede estar vacío.');
+                }
+            },
+        ],
     ]);
 
-    $code = $request->input('code');
-
-    if ($code === null) {
+    if ($validator->fails()) {
         return response()->json([
-            'error' => 'El campo code no puede estar vacío.',
+            'error' => $validator->errors()->first('code'),
         ], 400);
     }
+
+    $code = $request->input('code');
 
     $eventCode = eventscodes::where('code', $code)->first();
     if (!$eventCode) {
