@@ -37,7 +37,6 @@ class ConsumerCodeController extends Controller
     $code = $request->input('code');
 
     $eventCode = eventscodes::where('code', $code)->first();
-    $eventUrl = Video::where('event_id', $eventCode->event_id)->first();
 
     if (!$eventCode) {
         return response()->json([
@@ -60,7 +59,6 @@ class ConsumerCodeController extends Controller
     return response()->json([
         'message' => 'El registro se ha creado correctamente.',
         'event_id' => $eventCode->event_id,
-        'url' => $eventUrl->url
     ],200);
 }
 }
