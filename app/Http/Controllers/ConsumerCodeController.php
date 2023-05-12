@@ -18,15 +18,16 @@ class ConsumerCodeController extends Controller
             'present',
             function ($attribute, $value, $fail) {
                 if (empty($value)) {
-                    $fail('El campo code no puede estar vacío.');
-                }
+                    return response()->json([
+                        'message' => 'El código de evento no existe.',
+                    ]); }
             },
         ],
     ]);
 
     if ($validator->fails()) {
         return response()->json([
-            'error' => $validator->errors()->first('code'),
+            'message' => $validator->errors()->first('code'),
         ], 400);
     }
 
