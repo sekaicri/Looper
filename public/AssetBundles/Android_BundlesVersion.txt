@@ -2,35 +2,35 @@
     "bundles": [
         {
             "name": "scenes/home",
-            "sVersion": "1dc7c82c7cacbb5ce2fe6225b0f522a5"
+            "sVersion": "f6f2ee331f66f0e8921279d176e01656"
         },
         {
             "name": "scenes/isla",
-            "sVersion": "79200a9b553191dbf37a84a6720d2b11"
+            "sVersion": "b5eeae891da464a41aa9c2b564736ca3"
         },
         {
             "name": "scenes/laperla1",
-            "sVersion": "812f38ff5174ef6e29d3c05e3dbdc1d5"
+            "sVersion": "ad5034b80ec728aa100eaab1b7d85bdd"
         },
         {
             "name": "scenes/laperla2",
-            "sVersion": "5489cded02b6b174b7094d53c051a26f"
+            "sVersion": "a0f6740836c5ad41bd6389385c7efe9c"
         },
         {
             "name": "scenes/liberty",
-            "sVersion": "3f43bee410eb9cc12f0e1db6540c4561"
+            "sVersion": "c0f7a690bdb4bba825ccc986a457a5f0"
         },
         {
             "name": "scenes/plazav2",
-            "sVersion": "63365c0e4a2bf3d57b7fd172905cde02"
+            "sVersion": "c52e434f4995382c0a1c63d124ea48a7"
         },
         {
             "name": "scenes/theatre",
-            "sVersion": "bb8bda35a0a06eb2ee84198b9681ad79"
+            "sVersion": "06b7b1a58c2b525febe7d1232179460e"
         },
         {
             "name": "scenes/torres",
-            "sVersion": "cc4302dfd7dd740a174b7ef69dbd5c50"
+            "sVersion": "430c4c0545f56006a0a5449c9da1bc97"
         }
     ]
 }
