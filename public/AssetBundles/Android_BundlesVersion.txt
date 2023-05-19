@@ -1,36 +1,40 @@
 {
     "bundles": [
         {
+            "name": "scenes/basketball",
+            "sVersion": "51f0f9c7f3317f6888d7b906997c8d0f"
+        },
+        {
             "name": "scenes/home",
-            "sVersion": "f6f2ee331f66f0e8921279d176e01656"
+            "sVersion": "569b6de98d700fe011b89464925c30d1"
         },
         {
             "name": "scenes/isla",
-            "sVersion": "b5eeae891da464a41aa9c2b564736ca3"
+            "sVersion": "c8b37504db8734e38ee8317ffc86f061"
         },
         {
             "name": "scenes/laperla1",
-            "sVersion": "ad5034b80ec728aa100eaab1b7d85bdd"
+            "sVersion": "2eb24e87f82fc8219fdd3c5f377d6bf9"
         },
         {
             "name": "scenes/laperla2",
-            "sVersion": "a0f6740836c5ad41bd6389385c7efe9c"
+            "sVersion": "3ecd88c8579d9e237df0860c0d99ceeb"
         },
         {
             "name": "scenes/liberty",
-            "sVersion": "c0f7a690bdb4bba825ccc986a457a5f0"
+            "sVersion": "a7bda90eddb6b8c9412b0e3f0175f00e"
         },
         {
             "name": "scenes/plazav2",
-            "sVersion": "c52e434f4995382c0a1c63d124ea48a7"
+            "sVersion": "e4103fb7c4d3743bc08ff26bd629d7d8"
         },
         {
             "name": "scenes/theatre",
-            "sVersion": "06b7b1a58c2b525febe7d1232179460e"
+            "sVersion": "6ae8f6d99b6355e55eff31d342d2db62"
         },
         {
             "name": "scenes/torres",
-            "sVersion": "430c4c0545f56006a0a5449c9da1bc97"
+            "sVersion": "b4fa4139bd149b9d236b11c074ceae86"
         }
     ]
 }
