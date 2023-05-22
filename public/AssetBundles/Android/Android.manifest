@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 1938560206
+CRC: 12332545
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -16,4 +16,16 @@ AssetBundleManifest:
       Dependencies: {}
     Info_4:
       Name: scenes/torres
+      Dependencies: {}
+    Info_5:
+      Name: scenes/laperla1
+      Dependencies: {}
+    Info_6:
+      Name: scenes/laperla2
+      Dependencies: {}
+    Info_7:
+      Name: scenes/home
+      Dependencies: {}
+    Info_8:
+      Name: scenes/basketball
       Dependencies: {}
