@@ -2,7 +2,7 @@
     "bundles": [
         {
             "name": "scenes/basketball",
-            "sVersion": "e6518b12b1822d0fedba27ed5454331a"
+            "sVersion": "81309f95ba0a68034429d843aeb12cbe"
         },
         {
             "name": "scenes/home",
