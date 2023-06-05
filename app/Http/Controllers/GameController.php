@@ -13,7 +13,7 @@ class GameController extends Controller
     {
         // Verificar si los campos son nulos
         if ($request->name_user === null || $request->name_game === null || $request->score === null) {
-            return response()->json(['error' => 'Los campos no pueden ser nulos'], 400);
+            return response()->json(['message' => 'Los campos no pueden ser nulos'], 400);
         }
     
         $validatedData = $request->validate([
