@@ -57,5 +57,7 @@ class GameController extends Controller
             'user_id' => $score->name_user,
         ];
     });
+
+    return response()->json([ 'top_scores' => $result], 200);
     }
 }
