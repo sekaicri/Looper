@@ -57,7 +57,5 @@ class GameController extends Controller
             'user_id' => $score->name_user,
         ];
     });
-
-    return response()->json(['message' => 'Juego registrado/actualizado con éxito', 'top_scores' => $result], 200);
     }
 }
