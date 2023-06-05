@@ -12,7 +12,7 @@ class GameController extends Controller
     public function store(Request $request)
     {
         // Verificar si los campos son nulos
-        if ($request->user_id === null || $request->name === null || $request->score === null) {
+        if ($request->name_user === null || $request->name_game === null || $request->score === null) {
             return response()->json(['error' => 'Los campos no pueden ser nulos'], 400);
         }
     
