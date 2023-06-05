@@ -17,13 +17,13 @@ class GameController extends Controller
         }
     
         $validatedData = $request->validate([
-            'user_id' => 'required|integer',
-            'name' => 'required',
+            'name_user' => 'required',
+            'name_game' => 'required',
             'score' => 'required',
         ]);
     
-        $game = Games::where('name', $validatedData['name'])
-            ->where('user_id', $validatedData['user_id'])
+        $game = Games::where('name_game', $validatedData['name_game'])
+            ->where('name_user', $validatedData['name_user'])
             ->first();
     
         if ($game) {
@@ -33,8 +33,8 @@ class GameController extends Controller
             }
         } else {
             $game = new Games();
-            $game->user_id = $validatedData['user_id'];
-            $game->name = $validatedData['name'];
+            $game->name_user = $validatedData['name_user'];
+            $game->name_game = $validatedData['name_game'];
             $game->score = $validatedData['score'];
             $game->save();
         }
@@ -45,27 +45,19 @@ class GameController extends Controller
 
     public function getTopScores(Request $request)
     {
-        $name = $request->input('name');
+        $topScores = Games::select('score', 'name_user')
+        ->where('name_game', $request['name_game'])
+        ->orderBy('score', 'desc')
+        ->take(10)
+        ->get();
 
-        $topScores = Games::select('score', 'user_id')
-            ->where('name', $name)
-            ->orderBy('score', 'desc')
-            ->take(10)
-            ->get();
+    $result = $topScores->map(function ($score) {
+        return [
+            'score' => $score->score,
+            'user_id' => $score->name_user,
+        ];
+    });
 
-        $userIds = $topScores->pluck('user_id');
-
-        $userNames = User::whereIn('id', $userIds)->pluck('name');
-
-        $result = $topScores->map(function ($score) use ($userNames) {
-            $userName = $userNames->get($score->user_id);
-            return [
-                'score' => $score->score,
-                'user_id' => $score->user_id,
-                'user_name' => $userName,
-            ];
-        });
-
-        return response()->json(['top_scores' => $result], 200);
+    return response()->json(['message' => 'Juego registrado/actualizado con éxito', 'top_scores' => $result], 200);
     }
 }

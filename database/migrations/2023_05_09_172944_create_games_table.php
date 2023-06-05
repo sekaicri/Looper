@@ -16,10 +16,9 @@ return new class extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->unsignedBigInteger('user_id');
-            $table->string('name');
+            $table->string('name_user');
+            $table->string('name_game');
             $table->float('score');
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
