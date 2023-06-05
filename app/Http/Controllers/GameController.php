@@ -54,7 +54,7 @@ class GameController extends Controller
     $result = $topScores->map(function ($score) {
         return [
             'score' => $score->score,
-            'user_id' => $score->name_user,
+            'name_user' => $score->name_user,
         ];
     });
 
