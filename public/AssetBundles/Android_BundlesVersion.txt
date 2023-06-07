@@ -6,15 +6,15 @@
         },
         {
             "name": "scenes/home",
-            "sVersion": "ee6655a5ff70d8c06e798c2b9cf908a5"
+            "sVersion": "978e9c3f6cab06650baaa026b6f51ab2"
         },
         {
             "name": "scenes/isla",
-            "sVersion": "c3865e477b0ad3a8f99761de4f887f31"
+            "sVersion": "62f45d69286be38e94af5da9d656f666"
         },
         {
             "name": "scenes/laperla1",
-            "sVersion": "26537f8849479f5e7d029f280ac291f4"
+            "sVersion": "e80853b5b87a0e49a01070f92edd7fca"
         },
         {
             "name": "scenes/laperla2",
@@ -22,19 +22,19 @@
         },
         {
             "name": "scenes/liberty",
-            "sVersion": "fb7b7741f8e0e55cb8b820fa1cbae1f3"
+            "sVersion": "3970ba0ece5b550493f3f6b4ad46cd73"
         },
         {
             "name": "scenes/plazav2",
-            "sVersion": "996c57689a5dbf4a5cf01d18bb380248"
+            "sVersion": "9776ee48ea80ae04fa5bb940c61b5f03"
         },
         {
             "name": "scenes/theatre",
-            "sVersion": "6165f7a366c10b6198de41c52c46ee1d"
+            "sVersion": "b69fa9560533f2ff61c381fcd94f9f09"
         },
         {
             "name": "scenes/torres",
-            "sVersion": "f0c91b8e64b313a78de3dc8d2d46175e"
+            "sVersion": "e3f57fa48cbc99fc344a282128ba52d2"
         }
     ]
 }
