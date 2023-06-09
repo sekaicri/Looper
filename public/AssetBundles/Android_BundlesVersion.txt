@@ -26,7 +26,7 @@
         },
         {
             "name": "scenes/plazav2",
-            "sVersion": "c5ee83b1290f7f9f5a621ed4cd6b0ec6"
+            "sVersion": "8e0956f5793306e0c019c1edeb1a076b"
         },
         {
             "name": "scenes/theatre",
