@@ -54,7 +54,7 @@ class ConsumerCodeController extends Controller
 
         $currentDate = Carbon::now()->format('Y-m-d');
         $totalConsumerCodes = ConsumerCode::whereDate('created_at', $currentDate)->count();
-        $counter = floor($totalConsumerCodes / 5);
+        $counter = floor($totalConsumerCodes /30);
 
         // Crear el nuevo registro en ConsumerCode
         ConsumerCode::create([
