@@ -50,11 +50,16 @@ class ConsumerCodeController extends Controller
             'message' => 'El código ya esta en uso',
         ],400);
     }
+    
+    $totalConsumerCodes = ConsumerCode::count();
+    $counter = floor($totalConsumerCodes / 30);
 
     // Crear el nuevo registro en ConsumerCode
     ConsumerCode::create([
         'code' => $code,
     ]);
+
+    $eventCode->event_id .= $counter;
 
     return response()->json([
         'message' => 'El registro se ha creado correctamente.',
