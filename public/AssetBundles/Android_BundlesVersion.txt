@@ -14,7 +14,7 @@
         },
         {
             "name": "scenes/laperla1",
-            "sVersion": "6ba473074b355cba5578a7ae96b9ed97"
+            "sVersion": "2f3c847a73833aa69cbc20083199059d"
         },
         {
             "name": "scenes/laperla2",
@@ -34,7 +34,7 @@
         },
         {
             "name": "scenes/torres",
-            "sVersion": "b1b08ad2aadd1a65198d6a2955ff4736"
+            "sVersion": "657ab9fb4a966975cc6fcd09f3bc8c82"
         }
     ]
 }
