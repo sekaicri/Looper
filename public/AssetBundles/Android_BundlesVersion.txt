@@ -14,7 +14,7 @@
         },
         {
             "name": "scenes/laperla1",
-            "sVersion": "8a19aa4c16b673ae1786a6918e6f79bb"
+            "sVersion": "6ba473074b355cba5578a7ae96b9ed97"
         },
         {
             "name": "scenes/laperla2",
@@ -26,7 +26,7 @@
         },
         {
             "name": "scenes/plazav2",
-            "sVersion": "8ef1afa5cbf42c76dc1c549bb5e4ca5d"
+            "sVersion": "7d8014bd2cec7099067be69d31e43afa"
         },
         {
             "name": "scenes/theatre",
@@ -34,7 +34,7 @@
         },
         {
             "name": "scenes/torres",
-            "sVersion": "0142d27024668385584dc6dbfc66e0f1"
+            "sVersion": "b1b08ad2aadd1a65198d6a2955ff4736"
         }
     ]
 }
