@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('code');
             $table->dateTime('fecha');
             $table->string('description')->nullable();
+            $table->string('url')->nullable(); // Nuevo campo 'url' que puede ser nulo
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

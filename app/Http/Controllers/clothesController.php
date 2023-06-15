@@ -96,7 +96,6 @@ class clothesController extends Controller
 
         }
     }
-
   
     public function show(Request $request)
     {
@@ -108,7 +107,6 @@ class clothesController extends Controller
         ]);
     }
 
-   
     public function showClothes()
     {
         $creation = DB::SELECT('(SELECT * FROM clothes )');
@@ -119,17 +117,5 @@ class clothesController extends Controller
             'data'      => $creation 
         ]);
       
-    }
-
-  
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-   
-    public function destroy($id)
-    {
-        //
     }
 }

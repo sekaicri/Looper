@@ -11,42 +11,33 @@ use Illuminate\Support\Facades\Hash;
 
 class EventsController extends Controller
 {
-
     public function index()
     {
         //
     }
 
-
-    public function CreateEvent(EventsRequest $request)
+    public function createEvent(EventsRequest $request)
     {
         $code = $this->generateUniqueCode();
-        $user = $request->user_id;
-        $description = $request->description;
+        $data = [
+            'name' => $request->name,
+            'fecha' => $request->fecha,
+            'code' => $code,
+            'user_id' => $request->user_id,
+            'description' => $request->description,
+            'url' => $request->url
+        ];
 
-        if ($user != null) {
-
-            $events = Events::create([
-                'name' => $request['name'],
-                'fecha' => $request['fecha'],
-                'code' => $code,
-                'user_id' => $user,
-                'description' => $description,
-
-            ]);
-        } else {
-            $events = Events::create([
-                'name' => $request['name'],
-                'fecha' => $request['fecha'],
-                'code' => $code,
-            ]);
+        if ($request->user_id === null) {
+            unset($data['user_id']);
         }
 
+        $event = Events::create($data);
 
         return response()->json([
-            'success'   => true,
-            'message'   => 'Registro exitoso',
-            'data'      => $events
+            'success' => true,
+            'message' => 'Registro exitoso',
+            'data' => $event
         ]);
     }
 
@@ -116,32 +107,37 @@ class EventsController extends Controller
     }
     public function showEventCodes(Request $request)
     {
-        $user = eventscodes::where('code', $request['code'])->first();
-        if ($user) {
-            $nameEvent = Events::where('id', $user->event_id)->first();
+        $code = $request->input('code');
+
+        $eventCode = eventscodes::where('code', $code)->first();
+
+        if ($eventCode) {
+            $event = Events::find($eventCode->event_id);
+
             return response()->json([
-                'success'   => true,
-                'message'   => 'Evento',
-                'event'   =>  $nameEvent,
+                'success' => true,
+                'message' => 'Evento encontrado',
+                'event' => $event
             ]);
         } else {
             return response()->json([
-                'success'   => true,
-                'message'   => 'Codigo Invalido',
+                'success' => false,
+                'message' => 'Código inválido'
             ]);
         }
     }
+
     public function show()
     {
         $fechaActual = date('Y-m-d H:i:s');
-        $users = DB::table('events')->whereDate('fecha', '>=', $fechaActual)->get();
+        $events = DB::table('events')->where('fecha', '>', $fechaActual)->get();
+
         return response()->json([
-            'success'   => true,
-            'message'   => 'Registro exitoso',
-            'data'      => $users
+            'success' => true,
+            'message' => 'Registro exitoso',
+            'data' => $events
         ]);
     }
-
 
     public function showCode(Request $request)
     {
@@ -154,9 +150,49 @@ class EventsController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function updateUrl(Request $request)
     {
-        //
+        $eventId = $request->input('id');
+        $eventName = $request->input('name');
+
+        if ($eventId !== null) {
+            $event = Events::find($eventId);
+            if ($event) {
+                $event->url = $request->input('url');
+                $event->save();
+                return response()->json([
+                    'success' => true,
+                    'message' => 'URL actualizada exitosamente',
+                    'data' => $event
+                ]);
+            } else {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'No se encontró el evento con el ID proporcionado'
+                ], 404);
+            }
+        } elseif ($eventName !== null) {
+            $event = Events::where('name', $eventName)->first();
+            if ($event) {
+                $event->url = $request->input('url');
+                $event->save();
+                return response()->json([
+                    'success' => true,
+                    'message' => 'URL actualizada exitosamente',
+                    'data' => $event
+                ]);
+            } else {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'No se encontró el evento con el nombre proporcionado'
+                ], 404);
+            }
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'No se proporcionó ni el ID ni el nombre del evento'
+            ], 400);
+        }
     }
 
 

@@ -8,6 +8,7 @@ use App\Models\eventscodes;
 use App\Models\ConsumerCode;
 use App\Models\Video;
 use Carbon\Carbon;
+use App\Models\Events;
 
 use Illuminate\Support\Facades\Validator;
 
@@ -28,44 +29,47 @@ class ConsumerCodeController extends Controller
                 },
             ],
         ]);
-
+    
         if ($validator->fails()) {
             return response()->json([
                 'message' => $validator->errors()->first('code'),
             ], 400);
         }
-
+    
         $code = $request->input('code');
-
+    
         $eventCode = eventscodes::where('code', $code)->first();
-
+    
         if (!$eventCode) {
             return response()->json([
                 'message' => 'El código de evento no existe.',
             ], 400);
         }
-
+    
         $existingConsumerCode = ConsumerCode::where('code', $code)->first();
         if ($existingConsumerCode) {
             return response()->json([
                 'message' => 'El código ya está en uso',
             ], 400);
         }
-
+    
         $currentDate = Carbon::now()->format('Y-m-d');
         $totalConsumerCodes = ConsumerCode::whereDate('created_at', $currentDate)->count();
-        $counter = floor($totalConsumerCodes /30);
-
+        $counter = floor($totalConsumerCodes / 30);
+    
         // Crear el nuevo registro en ConsumerCode
         ConsumerCode::create([
             'code' => $code,
         ]);
-
-        $eventCode->event_id .= $counter;
-
+    
+        $event = Events::find($eventCode->event_id);
+        $event->url .= $counter;
+        $event->save();
+    
         return response()->json([
             'message' => 'El registro se ha creado correctamente.',
             'event_id' => $eventCode->event_id,
+            'event_url' => $event->url,
         ], 200);
     }
 }

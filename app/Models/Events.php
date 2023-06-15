@@ -15,5 +15,6 @@ class Events extends Model
         'fecha',
         'description',
         'user_id',
+        'url',
     ];
 }
