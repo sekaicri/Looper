@@ -63,8 +63,8 @@ class ConsumerCodeController extends Controller
         ]);
     
         $event = Events::find($eventCode->event_id);
-        $event->url .= $counter;
         $event->save();
+        $eventCode->event_id .= $counter;
     
         return response()->json([
             'message' => 'El registro se ha creado correctamente.',
