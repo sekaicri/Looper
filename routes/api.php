@@ -32,11 +32,12 @@ Route::post('/Members', [AuthController::class,'Members']);
 Route::post('/FriendRequest', [FriendsRequests::class,'Register']);
 Route::post('/password/email', [ForgotPasswordController::class,'sendResetLinkEmail']);
 
-Route::post('/Registerevent', [EventsController::class,'CreateEvent']);
-Route::post('/ShowEvents', [EventsController::class,'show']);
-Route::post('/CreateCodes', [EventsController::class,'CreatedCodes']);
-Route::post('/ShowCodes', [EventsController::class,'showCode']);
-Route::post('/ShowCodeEvent', [EventsController::class,'showEventCodes']);
+Route::post('/Registerevent', [EventsController::class, 'CreateEvent']);
+Route::post('/ShowEvents', [EventsController::class, 'show']);
+Route::post('/CreateCodes', [EventsController::class, 'CreatedCodes']);
+Route::post('/ShowCodes', [EventsController::class, 'showCode']);
+Route::post('/ShowCodeEvent', [EventsController::class, 'showEventCodes']);
+Route::post('/UpdateEventUrl', [EventsController::class, 'updateUrl']);
 
 Route::post('/createwear', [clothesController::class,'create']);
 Route::post('/createdcodesclothes', [clothesController::class,'CreatedCodeclothes']);
