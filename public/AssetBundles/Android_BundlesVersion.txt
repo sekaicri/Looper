@@ -6,15 +6,15 @@
         },
         {
             "name": "scenes/home",
-            "sVersion": "3ca7fda6d2214f2546cd0c595cb5f72c"
+            "sVersion": "7041a95d397d477512f7b4dedd90da2a"
         },
         {
             "name": "scenes/isla",
-            "sVersion": "fcddd42deabc398c415bbc70f7c762e6"
+            "sVersion": "4222644308de906bbc54cc62e4f028d0"
         },
         {
             "name": "scenes/laperla1",
-            "sVersion": "33f4d56b6fe7e6d64e21739350090eb6"
+            "sVersion": "8808d712e2c205858d578e433b4cd5d1"
         },
         {
             "name": "scenes/laperla2",
@@ -26,15 +26,15 @@
         },
         {
             "name": "scenes/plazav2",
-            "sVersion": "d69a597a8f09f811ae8bcc4268f38e73"
+            "sVersion": "d16bebe83448126edbb18de577844a31"
         },
         {
             "name": "scenes/theatre",
-            "sVersion": "3eebeaa32ed713b6a3f793bd2f77e321"
+            "sVersion": "a8b7fb44c6b7b854d323510a1b52ae49"
         },
         {
             "name": "scenes/torres",
-            "sVersion": "15ee6b1d7940d14b75c6723dd986393c"
+            "sVersion": "09e08bd053cdf63ce1630373a9cd2d76"
         }
     ]
 }
