@@ -1,0 +1,8 @@
+{
+    "bundles": [
+        {
+            "name": "scenes/home",
+            "sVersion": "10f6f31f99f17a600c9aee3838a7653a"
+        }
+    ]
+}
