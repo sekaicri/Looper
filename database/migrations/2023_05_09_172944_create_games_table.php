@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name_user');
             $table->string('name_game');
             $table->float('score');
+            $table->string('description')->nullable();
         });
     }
 

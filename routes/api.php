@@ -59,6 +59,7 @@ Route::post('/searchvideo', [VideoController::class,'search']);
 
 Route::post('/saveGame', [GameController::class, 'store']);
 Route::post('/ScoreTop', [GameController::class, 'getTopScores']);
+Route::post('/ScoreName', [GameController::class, 'getScoresByUserName']);
 
 Route::post('/saveConsumerCode', [ConsumerCodeController::class, 'store']);
 

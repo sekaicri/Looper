@@ -11,15 +11,11 @@ class GameController extends Controller
 {
     public function store(Request $request)
     {
-        // Verificar si los campos son nulos
-        if ($request->name_user === null || $request->name_game === null || $request->score === null) {
-            return response()->json(['message' => 'Los campos no pueden ser nulos'], 400);
-        }
-    
         $validatedData = $request->validate([
             'name_user' => 'required',
             'name_game' => 'required',
             'score' => 'required',
+            'description' => 'nullable', // Campo description ahora es opcional
         ]);
     
         $game = Games::where('name_game', $validatedData['name_game'])
@@ -29,6 +25,7 @@ class GameController extends Controller
         if ($game) {
             if ($validatedData['score'] > $game->score) {
                 $game->score = $validatedData['score'];
+                $game->description = $validatedData['description']; // Actualizar description si se proporciona
                 $game->save();
             }
         } else {
@@ -36,6 +33,7 @@ class GameController extends Controller
             $game->name_user = $validatedData['name_user'];
             $game->name_game = $validatedData['name_game'];
             $game->score = $validatedData['score'];
+            $game->description = $validatedData['description']; // Asignar description si se proporciona
             $game->save();
         }
     
@@ -59,5 +57,25 @@ class GameController extends Controller
     });
 
     return response()->json([ 'top_scores' => $result], 200);
+    }
+    public function getScoresByUserName(Request $request)
+    {
+        $userName = $request['name_user'];
+    
+        $userScores = Games::select('score', 'name_user', 'description') // Include 'description' column
+            ->where('name_game', $request['name_game'])
+            ->where('name_user', $userName)
+            ->orderBy('score', 'desc')
+            ->get();
+    
+        $result = $userScores->map(function ($score) {
+            return [
+                'score' => $score->score,
+                'name_user' => $score->name_user,
+                'description' => $score->description, // Include 'description' in the response
+            ];
+        });
+    
+        return response()->json($result);
     }
 }
