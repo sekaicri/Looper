@@ -62,8 +62,7 @@ class GameController extends Controller
     {
         $userName = $request['name_user'];
     
-        $userScores = Games::select('score', 'name_user') // Include 'description' column
-            ->where('name_game', $request['name_game'])
+        $userScores = Games::select('score', 'name_user', 'description') // Include 'description' column
             ->where('name_user', $userName)
             ->orderBy('score', 'desc')
             ->get();
