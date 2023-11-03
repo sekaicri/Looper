@@ -12,5 +12,6 @@ class Games extends Model
         'name_game',
         'score',
         'name_user',
+        'description',
     ];
 }
