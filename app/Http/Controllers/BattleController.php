@@ -12,7 +12,7 @@ class BattleController extends Controller
     {
         $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersNumber = strlen($characters);
-        $codeLength = 5;
+        $codeLength = 4;
 
         $code = '';
 

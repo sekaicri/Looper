@@ -9,7 +9,6 @@ class Battle extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'battle_id',
         'value',
         'paid',
         'code',
