@@ -12,6 +12,7 @@ use App\Http\Controllers\objectscene;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\ConsumerCodeController;
+use App\Http\Controllers\BattleController;
 
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Database\Console\Migrations\ResetCommand;
@@ -62,6 +63,10 @@ Route::post('/ScoreTop', [GameController::class, 'getTopScores']);
 Route::post('/ScoreName', [GameController::class, 'getScoresByUserName']);
 
 Route::post('/saveConsumerCode', [ConsumerCodeController::class, 'store']);
+
+Route::post('/generate-codes', [BattleController::class, 'generateUniqueCodes']);
+Route::post('/mark-as-used', [BattleController::class, 'markCodeAsUsed']);
+Route::post('/mark-as-paid', [BattleController::class, 'markCodeAsPaid']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
