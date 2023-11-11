@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('battleusers', function (Blueprint $table) {
+        Schema::create('battles', function (Blueprint $table) {
             $table->id();
             $table->integer('value');
             $table->boolean('paid')->default(false);
