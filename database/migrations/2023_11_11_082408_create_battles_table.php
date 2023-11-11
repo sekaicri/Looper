@@ -15,14 +15,11 @@ return new class extends Migration
     {
         Schema::create('battleusers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('battle_id');
             $table->integer('value');
             $table->boolean('paid')->default(false);
             $table->string('code', 4)->unique();
             $table->boolean('used')->default(false);
             $table->timestamps();
-
-            $table->foreign('battle_id')->references('id')->on('battles')->onDelete('cascade');
         });
     }
     /**
