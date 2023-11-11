@@ -54,29 +54,35 @@ class BattleController extends Controller
         ]);
     }
 
-public function markCodeAsUsed(Request $request)
-{
-    $code = $request->input('code');
-
-    $battleUser = Battle::where('code', $code)->first();
-
-    if ($battleUser && !$battleUser->used) {
-        $battleUser->used = true;
-        $battleUser->save();
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Code marked as used successfully',
-            'data' => $battleUser,
-        ]);
-    } else {
-        return response()->json([
-            'success' => false,
-            'message' => 'Code not found or already used',
-            'data' => null,
-        ], 404);
+    public function markCodeAsUsed(Request $request)
+    {
+        $code = $request->input('code');
+        $value = $request->input('value');
+    
+        $battleUser = Battle::where('code', $code)
+            ->when($value, function ($query) use ($value) {
+                return $query->where('value', $value);
+            })
+            ->where('used', false)
+            ->first();
+    
+        if ($battleUser) {
+            $battleUser->used = true;
+            $battleUser->save();
+    
+            return response()->json([
+                'success' => true,
+                'message' => 'Code marked as used successfully',
+                'data' => $battleUser,
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Code not found, already used, or mismatched value',
+                'data' => null,
+            ], 404);
+        }
     }
-}
 
 public function markCodeAsPaid(Request $request)
 {
