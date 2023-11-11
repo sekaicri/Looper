@@ -119,4 +119,19 @@ public function markCodeAsPaid(Request $request)
         ], 404);
     }
 }
+
+public function isCodePaid(Request $request)
+{
+    $code = $request->input('code');
+
+    // Buscar el código en la base de datos
+    $battleUser = Battle::where('code', $code)->first();
+
+    // Verificar si el código existe y ha sido pagado
+    $isPaid = $battleUser ? $battleUser->paid : false;
+
+    return response()->json([
+        'isPaid' => $isPaid,
+    ]);
+}
 }

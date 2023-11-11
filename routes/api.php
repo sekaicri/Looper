@@ -67,6 +67,7 @@ Route::post('/saveConsumerCode', [ConsumerCodeController::class, 'store']);
 Route::post('/generate-codes', [BattleController::class, 'generateUniqueCodes']);
 Route::post('/mark-as-used', [BattleController::class, 'markCodeAsUsed']);
 Route::post('/mark-as-paid', [BattleController::class, 'markCodeAsPaid']);
+Route::post('/is-code-paid', [BattleController::class, 'isCodePaid']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
