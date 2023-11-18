@@ -114,16 +114,22 @@
                 <div class="tournament-container">
                     <h2>Torneo</h2>
                     <ul class="tournament-list">
-                        @if (isset($tournamentRecords))
-                            @foreach ($tournamentRecords as $record)
-                                <li class="tournament-item">
-                                    <strong>Usuario:</strong> {{ $record['name_user'] }}<br>
-                                    <strong>Puntuación:</strong> {{ $record['score'] }}<br>
-                                    <strong>Código:</strong> {{ $record['code'] }}<br>
-                                    <strong>Pagado:</strong> {{ $record['is_code_paid'] ? 'Sí' : 'No' }}
-                                </li>
-                            @endforeach
-                        @endif
+                        @foreach ($tournamentRecords as $record)
+                            <li class="tournament-item">
+                                <strong>Usuario:</strong> {{ $record['name_user'] }}<br>
+                                <strong>Puntuación:</strong> {{ $record['score'] }}<br>
+                                <strong>Código:</strong> {{ $record['code'] }}<br>
+                                <strong>Pagado:</strong> {{ $record['is_code_paid'] ? 'Sí' : 'No' }}
+                
+                                @if (!$record['is_code_paid'])
+                                    <form action="{{ url('/mark-code-as-paid') }}" method="post" style="display:inline;">
+                                        @csrf
+                                        <input type="hidden" name="code" value="{{ $record['code'] }}">
+                                        <button type="submit" class="btn btn-success">Pagar</button>
+                                    </form>
+                                @endif
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
