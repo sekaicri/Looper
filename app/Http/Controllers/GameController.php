@@ -5,27 +5,35 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Games;
-use App\Models\User;
+use App\Http\Controllers\BattleController;
 
 class GameController extends Controller
 {
-    public function store(Request $request)
+    protected $battleController;
+
+    public function __construct(BattleController $battleController)
     {
-        $validatedData = $request->validate([
-            'name_user' => 'required',
-            'name_game' => 'required',
-            'score' => 'required',
-            'description' => 'nullable', // Campo description ahora es opcional
-        ]);
-    
+        $this->battleController = $battleController;
+    }
+
+    public function store(Request $request)
+{
+    $validatedData = $request->validate([
+        'name_user' => 'required',
+        'name_game' => 'required',
+        'score' => 'required',
+        'description' => 'nullable', 
+    ]);
+
+    if ($validatedData['name_game'] !== 'Battle') {
         $game = Games::where('name_game', $validatedData['name_game'])
             ->where('name_user', $validatedData['name_user'])
             ->first();
-    
+
         if ($game) {
             if ($validatedData['score'] > $game->score) {
                 $game->score = $validatedData['score'];
-                $game->description = $validatedData['description']; // Actualizar description si se proporciona
+                $game->description = $validatedData['description'];
                 $game->save();
             }
         } else {
@@ -33,12 +41,13 @@ class GameController extends Controller
             $game->name_user = $validatedData['name_user'];
             $game->name_game = $validatedData['name_game'];
             $game->score = $validatedData['score'];
-            $game->description = $validatedData['description']; // Asignar description si se proporciona
+            $game->description = $validatedData['description']; 
             $game->save();
         }
-    
-        return response()->json(['message' => 'Juego registrado/actualizado con éxito'], 200);
     }
+
+    return response()->json(['message' => 'Juego registrado/actualizado con éxito'], 200);
+}
 
 
     public function getTopScores(Request $request)
@@ -58,6 +67,7 @@ class GameController extends Controller
 
     return response()->json([ 'top_scores' => $result], 200);
     }
+
     public function getScoresByUserName(Request $request)
     {
         $userName = $request['name_user'];
@@ -76,5 +86,46 @@ class GameController extends Controller
         });
     
         return response()->json($result);
+    }
+
+    public function getGameRecordsByName(Request $request)
+    {
+        $nameGame = $request->input('name_game');
+
+        if (!$nameGame) {
+            return response()->json(['error' => 'El parámetro name_game es obligatorio.'], 400);
+        }
+
+        $gameRecords = Games::where('name_game', $nameGame)->get();
+
+        $result = $gameRecords->map(function ($record) {
+            $description = null;
+            if ($record->description) {
+                $description = json_decode($record->description);
+            }
+
+            $isCodePaid = $this->isCode($record->code);
+
+            return [
+                'name_user' => $record->name_user,
+                'score' => $record->score,
+                'description' => $description,
+                'is_code_paid' => $isCodePaid,
+                'code' => $record->code,
+            ];
+        });
+
+        return response()->json(['game_records' => $result], 200);
+    }
+
+    public function isCode($code)
+    {
+        try {
+            $response = $this->battleController->isCodePaid(new Request(['code' => $code]));
+            $responseData = json_decode($response->getContent(), true);
+            return isset($responseData['isPaid']) ? $responseData['isPaid'] : false;
+        } catch (\Exception $e) {
+            return false;
+        }
     }
 }

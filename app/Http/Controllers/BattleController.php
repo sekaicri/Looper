@@ -134,4 +134,32 @@ public function isCodePaid(Request $request)
         'isPaid' => $isPaid,
     ]);
 }
+
+public function showGenerateCodesForm()
+{
+    return view('generate_codes_form');
+}
+
+public function generateCodes(Request $request)
+{
+    $quantity = $request->input('quantity', 1);
+    $value = $request->input('value', 5);
+
+    $codes = [];
+
+    for ($i = 0; $i < $quantity; $i++) {
+        $code = $this->generateUniqueCode();
+
+        $battleUser = Battle::create([
+            'value' => $value,
+            'code' => $code,
+            'paid' => false,
+            'used' => false,
+        ]);
+
+        $codes[] = $code;
+    }
+
+    return view('generated_codes', ['codes' => $codes]);
+}
 }
