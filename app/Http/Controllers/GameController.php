@@ -24,25 +24,14 @@ class GameController extends Controller
             'score' => 'required',
             'description' => 'nullable',
         ]);
-    
-        $game = Games::where('name_game', $validatedData['name_game'])
-            ->where('name_user', $validatedData['name_user'])
-            ->first();
-    
-        if ($game) {
-            if ($validatedData['score'] > $game->score) {
-                $game->score = $validatedData['score'];
-                $game->description = $validatedData['description'];
-                $game->save();
-            }
-        } else {
+  
             $game = new Games();
             $game->name_user = $validatedData['name_user'];
             $game->name_game = $validatedData['name_game'];
             $game->score = $validatedData['score'];
             $game->description = $validatedData['description'];
             $game->save();
-        }
+        
     
         return response()->json(['message' => 'Juego registrado/actualizado con éxito'], 200);
     }
