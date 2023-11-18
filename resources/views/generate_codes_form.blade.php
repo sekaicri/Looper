@@ -12,17 +12,25 @@
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: space-between;
             height: 100vh;
         }
 
         .container {
-            width: 80%;
+            width: 40%;
             max-width: 400px;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+        }
+
+        .tournament {
+            width: 40%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
         }
 
         form {
@@ -75,7 +83,6 @@
             border-radius: 4px;
         }
 
-        /* Botón para descargar códigos */
         .download-button {
             background-color: #008CBA;
             color: #fff;
@@ -84,7 +91,6 @@
             border-radius: 4px;
             cursor: pointer;
         }
-
     </style>
 </head>
 <body>
@@ -116,6 +122,45 @@
                 <button class="download-button" type="submit">Descargar Códigos</button>
             </form>
         @endif
+    </div>
+
+    <!-- Lista de Torneo -->
+    <div class="tournament">
+        <h1>Torneo</h1>
+        <ul>
+            @php
+                $nameGame = 'Battle'; // Asumimos que el nombre del juego es "Battle"
+
+                $gameRecords = Games::where('name_game', $nameGame)->get();
+
+                $tournamentRecords = $gameRecords->map(function ($record) {
+                    $description = null;
+                    if ($record->description) {
+                        $description = json_decode($record->description);
+                    }
+
+                    $isCodePaid = $this->isCode($record->code);
+
+                    return [
+                        'name_user' => $record->name_user,
+                        'score' => $record->score,
+                        'description' => $description,
+                        'is_code_paid' => $isCodePaid,
+                        'code' => $record->code,
+                    ];
+                });
+            @endphp
+
+            @foreach ($tournamentRecords as $record)
+                <li>
+                    <strong>Usuario:</strong> {{ $record['name_user'] }}<br>
+                    <strong>Puntuación:</strong> {{ $record['score'] }}<br>
+                    <strong>Descripción:</strong> {{ $record['description'] }}<br>
+                    <strong>Código:</strong> {{ $record['code'] }}<br>
+                    <strong>Pagado:</strong> {{ $record['is_code_paid'] ? 'Sí' : 'No' }}
+                </li>
+            @endforeach
+        </ul>
     </div>
 </body>
 </html>
