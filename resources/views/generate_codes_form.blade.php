@@ -1,10 +1,9 @@
-<!-- resources/views/generate_codes_form.blade.php -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generador de Códigos</title>
+    <title>Generador de Códigos - Looper</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -14,6 +13,16 @@
             display: flex;
             justify-content: space-between;
             height: 100vh;
+        }
+
+        header {
+            background-color: #008CBA;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            width: 100%;
         }
 
         .container {
@@ -94,6 +103,10 @@
     </style>
 </head>
 <body>
+    <header>
+        Looper - Generador de Códigos
+    </header>
+
     <div class="container">
         <form action="{{ url('/generate-codes') }}" method="post">
             @csrf
@@ -128,14 +141,16 @@
     <div class="tournament">
         <h1>Torneo</h1>
         <ul>
-            @foreach ($tournamentRecords as $record)
-                <li>
-                    <strong>Usuario:</strong> {{ $record['name_user'] }}<br>
-                    <strong>Puntuación:</strong> {{ $record['score'] }}<br>
-                    <strong>Código:</strong> {{ $record['code'] }}<br>
-                    <strong>Pagado:</strong> {{ $record['is_code_paid'] ? 'Sí' : 'No' }}
-                </li>
-            @endforeach
+            @if (isset($tournamentRecords))
+                @foreach ($tournamentRecords as $record)
+                    <li>
+                        <strong>Usuario:</strong> {{ $record['name_user'] }}<br>
+                        <strong>Puntuación:</strong> {{ $record['score'] }}<br>
+                        <strong>Código:</strong> {{ $record['code'] }}<br>
+                        <strong>Pagado:</strong> {{ $record['is_code_paid'] ? 'Sí' : 'No' }}
+                    </li>
+                @endforeach
+            @endif
         </ul>
     </div>
     
