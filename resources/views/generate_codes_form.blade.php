@@ -132,7 +132,6 @@
                 <li>
                     <strong>Usuario:</strong> {{ $record['name_user'] }}<br>
                     <strong>Puntuación:</strong> {{ $record['score'] }}<br>
-                    <strong>Descripción:</strong> {{ $record['description'] ? $record['description'] : '' }}<br>
                     <strong>Código:</strong> {{ $record['code'] }}<br>
                     <strong>Pagado:</strong> {{ $record['is_code_paid'] ? 'Sí' : 'No' }}
                 </li>

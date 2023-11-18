@@ -193,7 +193,6 @@ private function getTournamentRecords()
         return [
             'name_user' => $record->name_user,
             'score' => $record->score,
-            'description' => $description,
             'is_code_paid' => $isCodePaid,
             'code' => $record->code,
         ];
