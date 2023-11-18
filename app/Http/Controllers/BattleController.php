@@ -178,7 +178,7 @@ public function isCode($code)
 
 private function getTournamentRecords()
 {
-    $nameGame = 'Battle'; // Asumimos que el nombre del juego es "Battle"
+    $nameGame = 'Battle';
 
     $gameRecords = Games::where('name_game', $nameGame)->get();
 
@@ -188,7 +188,7 @@ private function getTournamentRecords()
             $description = json_decode($record->description);
         }
 
-        $isCodePaid = $this->isCode($record->code);
+        $isCodePaid = $this->isCode($description->code);
 
         return [
             'name_user' => $record->name_user,
