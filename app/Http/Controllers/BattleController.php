@@ -183,22 +183,23 @@ private function getTournamentRecords()
     $gameRecords = Games::where('name_game', $nameGame)->get();
 
     $tournamentRecords = $gameRecords->map(function ($record) {
-        $description = null;
-        if ($record->description) {
-            $description = json_decode($record->description);
+        $description = json_decode($record->description);
+
+        $code = null;
+        if ($description && isset($description->Code)) {
+            $code = $description->Code;
         }
 
-        $isCodePaid = $this->isCode($description->Code);
+        $isCodePaid = $this->isCode($code);
 
         return [
             'name_user' => $record->name_user,
             'score' => $record->score,
             'is_code_paid' => $isCodePaid,
-            'code' => $record->code,
+            'code' => $code,
         ];
     });
 
     return $tournamentRecords;
 }
-
 }
