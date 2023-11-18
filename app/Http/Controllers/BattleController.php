@@ -136,11 +136,11 @@ public function isCodePaid(Request $request)
         'isPaid' => $isPaid,
     ]);
 }
-
 public function showGenerateCodesForm()
 {
+    $tournamentRecords = $this->getTournamentRecords();
 
-    return view('generate_codes_form', ['codes' => []]);
+    return view('generate_codes_form', ['codes' => [], 'tournamentRecords' => $tournamentRecords]);
 }
 
 public function generateCodes(Request $request)
