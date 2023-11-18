@@ -5,18 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Battle;
-use App\Http\Controllers\GameController;
 
 class BattleController extends Controller
 {
-
-    protected $battleController;
-
-    public function __construct(GameController $battleController)
-    {
-        $this->battleController = $battleController;
-    }
-
     public function generateUniqueCode()
     {
         $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -169,11 +160,8 @@ public function generateCodes(Request $request)
 
         $codes[] = $code;
     }
+    
 
-
-    $response = $this->battleController->getTournamentRecords();
-
-    return view('generate_codes_form', ['codes' => $codes, 'tournamentRecords' => $response]);
-
+    return view('generate_codes_form', ['codes' => $codes]);
 }
 }
