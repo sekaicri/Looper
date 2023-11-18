@@ -117,41 +117,4 @@ class GameController extends Controller
 
         return response()->json(['game_records' => $result], 200);
     }
-
-    public function isCode($code)
-    {
-        try {
-            $response = $this->battleController->isCodePaid(new Request(['code' => $code]));
-            $responseData = json_decode($response->getContent(), true);
-            return isset($responseData['isPaid']) ? $responseData['isPaid'] : false;
-        } catch (\Exception $e) {
-            return false;
-        }
-    }
-
-    public function getTournamentRecords()
-    {
-        $nameGame = 'Battle'; // Asumimos que el nombre del juego es "Battle"
-
-        $gameRecords = Games::where('name_game', $nameGame)->get();
-
-        $tournamentRecords = $gameRecords->map(function ($record) {
-            $description = null;
-            if ($record->description) {
-                $description = json_decode($record->description);
-            }
-
-            $isCodePaid = $this->isCode($record->code);
-
-            return [
-                'name_user' => $record->name_user,
-                'score' => $record->score,
-                'description' => $description,
-                'is_code_paid' => $isCodePaid,
-                'code' => $record->code,
-            ];
-        });
-
-        return $tournamentRecords;
-    }
 }

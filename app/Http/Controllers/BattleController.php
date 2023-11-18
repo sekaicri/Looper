@@ -5,17 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Battle;
-use App\Http\Controllers\GameController;
+use App\Models\Games;
 
 class BattleController extends Controller
 {
-
-    protected $battleController;
-
-    public function __construct(GameController $battleController)
-    {
-        $this->battleController = $battleController;
-    }
 
     public function generateUniqueCode()
     {
@@ -170,10 +163,43 @@ public function generateCodes(Request $request)
         $codes[] = $code;
     }
 
+    $tournamentRecords = $this->getTournamentRecords();
 
-    $response = $this->battleController->getTournamentRecords();
-
-    return view('generate_codes_form', ['codes' => $codes, 'tournamentRecords' => $response]);
-
+    return view('generate_codes_form', ['codes' => $codes, 'tournamentRecords' => $tournamentRecords]);
 }
+
+public function isCode($code)
+{
+        $response = $this->isCodePaid(new Request(['code' => $code]));
+        $responseData = json_decode($response->getContent(), true);
+        return isset($responseData['isPaid']) ? $responseData['isPaid'] : false;
+    
+}
+
+private function getTournamentRecords()
+{
+    $nameGame = 'Battle'; // Asumimos que el nombre del juego es "Battle"
+
+    $gameRecords = Games::where('name_game', $nameGame)->get();
+
+    $tournamentRecords = $gameRecords->map(function ($record) {
+        $description = null;
+        if ($record->description) {
+            $description = json_decode($record->description);
+        }
+
+        $isCodePaid = $this->isCode($record->code);
+
+        return [
+            'name_user' => $record->name_user,
+            'score' => $record->score,
+            'description' => $description,
+            'is_code_paid' => $isCodePaid,
+            'code' => $record->code,
+        ];
+    });
+
+    return $tournamentRecords;
+}
+
 }
