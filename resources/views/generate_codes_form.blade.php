@@ -27,8 +27,15 @@
         }
 
         .container {
-            width: 40%;
-            max-width: 400px;
+            display: flex;
+            justify-content: space-around;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .codes-container,
+        .tournament-container {
+            width: 45%;
             padding: 20px;
             background-color: #fff;
             border-radius: 8px;
@@ -89,14 +96,6 @@
             border-radius: 4px;
             cursor: pointer;
         }
-
-        .tournament {
-            width: 40%;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
     </style>
 </head>
 <body>
@@ -105,49 +104,51 @@
     </header>
 
     <div class="container">
-        <form action="{{ url('/generate-codes') }}" method="post">
-            @csrf
-            <label for="quantity">Cantidad:</label>
-            <input type="number" name="quantity" value="1" required>
-            <label for="value">Valor:</label>
-            <input type="number" name="value" value="5" required>
-            <br>
-            <input type="hidden" name="generated_codes" value="{{ implode(',', $codes) }}">
-            <br>
-            <button type="submit">Generar Códigos</button>
-        </form>
-
-        @if (!empty($codes))
-            <h1>Códigos Generados:</h1>
-            <ul>
-                @foreach ($codes as $code)
-                    <li>{{ $code }}</li>
-                @endforeach
-            </ul>
-            <!-- Botón para descargar los códigos -->
-            <form action="{{ url('/download-codes') }}" method="get">
+        <div class="codes-container">
+            <form action="{{ url('/generate-codes') }}" method="post">
                 @csrf
-                <input type="hidden" name="codes" value="{{ implode(',', $codes) }}">
-                <button class="download-button" type="submit">Descargar Códigos</button>
+                <label for="quantity">Cantidad:</label>
+                <input type="number" name="quantity" value="1" required>
+                <label for="value">Valor:</label>
+                <input type="number" name="value" value="5" required>
+                <br>
+                <input type="hidden" name="generated_codes" value="{{ implode(',', $codes) }}">
+                <br>
+                <button type="submit">Generar Códigos</button>
             </form>
-        @endif
-    </div>
 
-    <!-- Lista de Torneo -->
-    <div class="tournament">
-        <h1>Torneo</h1>
-        <ul>
-            @if (isset($tournamentRecords))
-                @foreach ($tournamentRecords as $record)
-                    <li>
-                        <strong>Usuario:</strong> {{ $record['name_user'] }}<br>
-                        <strong>Puntuación:</strong> {{ $record['score'] }}<br>
-                        <strong>Código:</strong> {{ $record['code'] }}<br>
-                        <strong>Pagado:</strong> {{ $record['is_code_paid'] ? 'Sí' : 'No' }}
-                    </li>
-                @endforeach
+            @if (!empty($codes))
+                <h1>Códigos Generados:</h1>
+                <ul>
+                    @foreach ($codes as $code)
+                        <li>{{ $code }}</li>
+                    @endforeach
+                </ul>
+                <!-- Botón para descargar los códigos -->
+                <form action="{{ url('/download-codes') }}" method="get">
+                    @csrf
+                    <input type="hidden" name="codes" value="{{ implode(',', $codes) }}">
+                    <button class="download-button" type="submit">Descargar Códigos</button>
+                </form>
             @endif
-        </ul>
+        </div>
+
+        <!-- Lista de Torneo -->
+        <div class="tournament-container">
+            <h1>Torneo</h1>
+            <ul>
+                @if (isset($tournamentRecords))
+                    @foreach ($tournamentRecords as $record)
+                        <li>
+                            <strong>Usuario:</strong> {{ $record['name_user'] }}<br>
+                            <strong>Puntuación:</strong> {{ $record['score'] }}<br>
+                            <strong>Código:</strong> {{ $record['code'] }}<br>
+                            <strong>Pagado:</strong> {{ $record['is_code_paid'] ? 'Sí' : 'No' }}
+                        </li>
+                    @endforeach
+                @endif
+            </ul>
+        </div>
     </div>
     
 </body>
