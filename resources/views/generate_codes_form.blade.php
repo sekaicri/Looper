@@ -128,31 +128,6 @@
     <div class="tournament">
         <h1>Torneo</h1>
         <ul>
-            @php
-                use App\Models\Games;
-
-                $nameGame = 'Battle'; // Asumimos que el nombre del juego es "Battle"
-
-                $gameRecords = Games::where('name_game', $nameGame)->get();
-
-                $tournamentRecords = $gameRecords->map(function ($record) {
-                    $description = null;
-                    if ($record->description) {
-                        $description = json_decode($record->description);
-                    }
-
-                    $isCodePaid = $this->isCode($record->code);
-
-                    return [
-                        'name_user' => $record->name_user,
-                        'score' => $record->score,
-                        'description' => $description,
-                        'is_code_paid' => $isCodePaid,
-                        'code' => $record->code,
-                    ];
-                });
-            @endphp
-
             @foreach ($tournamentRecords as $record)
                 <li>
                     <strong>Usuario:</strong> {{ $record['name_user'] }}<br>
@@ -164,5 +139,6 @@
             @endforeach
         </ul>
     </div>
+    
 </body>
 </html>
