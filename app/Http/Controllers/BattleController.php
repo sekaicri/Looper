@@ -202,4 +202,25 @@ private function getTournamentRecords()
 
     return $tournamentRecords;
 }
+
+public function markCodeAsPaidB(Request $request)
+{
+    $code = $request->input('code');
+
+    $battleUser = Battle::where('code', $code)->first();
+
+    if ($battleUser) {
+        if ($battleUser->paid) {
+            return redirect()->back()->with('error', 'El código ya ha sido pagado.');
+        }
+
+        // Marcar el código como pagado
+        $battleUser->paid = true;
+        $battleUser->save();
+
+        return redirect()->back()->with('success', 'Código marcado como pagado exitosamente.');
+    } else {
+        return redirect()->back()->with('error', 'Código no encontrado.');
+    }
+}
 }

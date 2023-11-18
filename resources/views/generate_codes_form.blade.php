@@ -122,7 +122,7 @@
                                 <strong>Pagado:</strong> {{ $record['is_code_paid'] ? 'Sí' : 'No' }}
                 
                                 @if (!$record['is_code_paid'])
-                                    <form action="{{ url('/mark-code-as-paid') }}" method="post" style="display:inline;">
+                                    <form action="{{ url('/mark-code-as-paidB') }}" method="post">
                                         @csrf
                                         <input type="hidden" name="code" value="{{ $record['code'] }}">
                                         <button type="submit" class="btn btn-success">Pagar</button>
