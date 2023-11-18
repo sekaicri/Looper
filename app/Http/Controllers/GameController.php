@@ -129,7 +129,7 @@ class GameController extends Controller
         }
     }
 
-    private function getTournamentRecords()
+    public function getTournamentRecords()
     {
         $nameGame = 'Battle'; // Asumimos que el nombre del juego es "Battle"
 
