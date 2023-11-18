@@ -188,7 +188,7 @@ private function getTournamentRecords()
             $description = json_decode($record->description);
         }
 
-        $isCodePaid = $this->isCode($description->code);
+        $isCodePaid = $this->isCode($description->Code);
 
         return [
             'name_user' => $record->name_user,
