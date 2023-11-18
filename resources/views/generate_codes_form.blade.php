@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generador de Códigos - Looper</title>
+    <title>Looper - Generador de Códigos</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -11,7 +11,8 @@
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
+            align-items: center;
             height: 100vh;
         }
 
@@ -19,7 +20,7 @@
             background-color: #008CBA;
             color: #fff;
             text-align: center;
-            padding: 10px;
+            padding: 20px;
             font-size: 24px;
             font-weight: bold;
             width: 100%;
@@ -28,38 +29,26 @@
         .container {
             width: 40%;
             max-width: 400px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .tournament {
-            width: 40%;
             padding: 20px;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
         }
 
         form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
         }
 
         label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
             font-weight: bold;
         }
 
         input {
             width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
+            padding: 10px;
+            margin-bottom: 20px;
             box-sizing: border-box;
             border: 1px solid #ccc;
             border-radius: 4px;
@@ -86,10 +75,10 @@
         }
 
         li {
-            margin-bottom: 5px;
+            margin-bottom: 15px;
             background-color: #dff0d8;
-            padding: 8px;
-            border-radius: 4px;
+            padding: 15px;
+            border-radius: 8px;
         }
 
         .download-button {
@@ -99,6 +88,14 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
+        }
+
+        .tournament {
+            width: 40%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
@@ -112,7 +109,6 @@
             @csrf
             <label for="quantity">Cantidad:</label>
             <input type="number" name="quantity" value="1" required>
-            <br>
             <label for="value">Valor:</label>
             <input type="number" name="value" value="5" required>
             <br>
