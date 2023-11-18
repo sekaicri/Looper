@@ -129,6 +129,8 @@
         <h1>Torneo</h1>
         <ul>
             @php
+                use App\Models\Games;
+
                 $nameGame = 'Battle'; // Asumimos que el nombre del juego es "Battle"
 
                 $gameRecords = Games::where('name_game', $nameGame)->get();
