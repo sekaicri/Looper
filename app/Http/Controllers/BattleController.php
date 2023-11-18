@@ -137,7 +137,7 @@ public function isCodePaid(Request $request)
 
 public function showGenerateCodesForm()
 {
-    return view('generate_codes_form');
+    return view('generate_codes_form', ['codes' => []]);
 }
 
 public function generateCodes(Request $request)
