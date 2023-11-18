@@ -17,11 +17,18 @@
             height: 100vh;
         }
 
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
         form {
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
         }
 
         label {
@@ -49,39 +56,45 @@
         }
 
         h1 {
-            margin-top: 20px;
             font-size: 18px;
+            margin-bottom: 10px;
         }
 
         ul {
             list-style-type: none;
             padding: 0;
+            margin: 0;
         }
 
         li {
             margin-bottom: 5px;
+            background-color: #dff0d8;
+            padding: 8px;
+            border-radius: 4px;
         }
     </style>
 </head>
 <body>
-    <form action="{{ url('/generate-codes') }}" method="post">
-        @csrf
-        <label for="quantity">Cantidad:</label>
-        <input type="number" name="quantity" value="1" required>
-        <br>
-        <label for="value">Valor:</label>
-        <input type="number" name="value" value="5" required>
-        <br>
-        <button type="submit">Generar Códigos</button>
-    </form>
+    <div class="container">
+        <form action="{{ url('/generate-codes') }}" method="post">
+            @csrf
+            <label for="quantity">Cantidad:</label>
+            <input type="number" name="quantity" value="1" required>
+            <br>
+            <label for="value">Valor:</label>
+            <input type="number" name="value" value="5" required>
+            <br>
+            <button type="submit">Generar Códigos</button>
+        </form>
 
-    @if (!empty($codes))
-        <h1>Códigos Generados:</h1>
-        <ul>
-            @foreach ($codes as $code)
-                <li>{{ $code }}</li>
-            @endforeach
-        </ul>
-    @endif
+        @if (!empty($codes))
+            <h1>Códigos Generados:</h1>
+            <ul>
+                @foreach ($codes as $code)
+                    <li>{{ $code }}</li>
+                @endforeach
+            </ul>
+        @endif
+    </div>
 </body>
 </html>
