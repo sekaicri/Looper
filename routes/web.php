@@ -32,5 +32,3 @@ Route::get('/videos', [App\Http\Controllers\VideoController::class, 'show'])->na
 Route::post('/generate-codes', [BattleController::class, 'generateCodes']);
 
 Route::get('/download-codes', [DownloadController::class, 'downloadCodes']);
-
-Route::get('/generate-codes', [GameController::class, 'getTournamentRecords']);
