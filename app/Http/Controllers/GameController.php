@@ -17,19 +17,18 @@ class GameController extends Controller
     }
 
     public function store(Request $request)
-{
-    $validatedData = $request->validate([
-        'name_user' => 'required',
-        'name_game' => 'required',
-        'score' => 'required',
-        'description' => 'nullable', 
-    ]);
-
-    if ($validatedData['name_game'] !== 'Battle') {
+    {
+        $validatedData = $request->validate([
+            'name_user' => 'required',
+            'name_game' => 'required',
+            'score' => 'required',
+            'description' => 'nullable',
+        ]);
+    
         $game = Games::where('name_game', $validatedData['name_game'])
             ->where('name_user', $validatedData['name_user'])
             ->first();
-
+    
         if ($game) {
             if ($validatedData['score'] > $game->score) {
                 $game->score = $validatedData['score'];
@@ -41,14 +40,12 @@ class GameController extends Controller
             $game->name_user = $validatedData['name_user'];
             $game->name_game = $validatedData['name_game'];
             $game->score = $validatedData['score'];
-            $game->description = $validatedData['description']; 
+            $game->description = $validatedData['description'];
             $game->save();
         }
+    
+        return response()->json(['message' => 'Juego registrado/actualizado con éxito'], 200);
     }
-
-    return response()->json(['message' => 'Juego registrado/actualizado con éxito'], 200);
-}
-
 
     public function getTopScores(Request $request)
     {
