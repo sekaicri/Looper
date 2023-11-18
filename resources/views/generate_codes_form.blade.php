@@ -4,16 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Looper - Generador de Códigos</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            height: 100vh;
+            padding-top: 50px; /* Añadido espacio para el header fijo */
         }
 
         header {
@@ -23,44 +19,34 @@
             padding: 20px;
             font-size: 24px;
             font-weight: bold;
+            position: fixed;
             width: 100%;
+            top: 0;
+            z-index: 1000;
         }
 
         .container {
-            display: flex;
-            justify-content: space-around;
-            width: 80%;
-            max-width: 800px;
+            margin-top: 80px; /* Añadido espacio para el header fijo */
         }
 
         .codes-container,
         .tournament-container {
-            width: 45%;
-            padding: 20px;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        form {
             margin-bottom: 20px;
+            padding: 20px;
         }
 
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
+        .codes-container {
+            max-width: 400px;
         }
 
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+        .tournament-container {
+            max-width: 600px;
         }
 
+        .download-button,
         button {
             background-color: #4caf50;
             color: #fff;
@@ -70,31 +56,16 @@
             cursor: pointer;
         }
 
-        h1 {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        ul {
-            list-style-type: none;
+        .tournament-list {
             padding: 0;
-            margin: 0;
         }
 
-        li {
-            margin-bottom: 15px;
+        .tournament-item {
+            list-style-type: none;
             background-color: #dff0d8;
             padding: 15px;
             border-radius: 8px;
-        }
-
-        .download-button {
-            background-color: #008CBA;
-            color: #fff;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
+            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -104,52 +75,63 @@
     </header>
 
     <div class="container">
-        <div class="codes-container">
-            <form action="{{ url('/generate-codes') }}" method="post">
-                @csrf
-                <label for="quantity">Cantidad:</label>
-                <input type="number" name="quantity" value="1" required>
-                <label for="value">Valor:</label>
-                <input type="number" name="value" value="5" required>
-                <br>
-                <input type="hidden" name="generated_codes" value="{{ implode(',', $codes) }}">
-                <br>
-                <button type="submit">Generar Códigos</button>
-            </form>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="codes-container">
+                    <form action="{{ url('/generate-codes') }}" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label for="quantity">Cantidad:</label>
+                            <input type="number" class="form-control" name="quantity" value="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="value">Valor:</label>
+                            <input type="number" class="form-control" name="value" value="5" required>
+                        </div>
+                        <input type="hidden" name="generated_codes" value="{{ implode(',', $codes) }}">
+                        <button type="submit" class="btn btn-primary">Generar Códigos</button>
+                    </form>
 
-            @if (!empty($codes))
-                <h1>Códigos Generados:</h1>
-                <ul>
-                    @foreach ($codes as $code)
-                        <li>{{ $code }}</li>
-                    @endforeach
-                </ul>
-                <!-- Botón para descargar los códigos -->
-                <form action="{{ url('/download-codes') }}" method="get">
-                    @csrf
-                    <input type="hidden" name="codes" value="{{ implode(',', $codes) }}">
-                    <button class="download-button" type="submit">Descargar Códigos</button>
-                </form>
-            @endif
-        </div>
+                    @if (!empty($codes))
+                        <h2>Códigos Generados:</h2>
+                        <ul>
+                            @foreach ($codes as $code)
+                                <li>{{ $code }}</li>
+                            @endforeach
+                        </ul>
+                        <!-- Botón para descargar los códigos -->
+                        <form action="{{ url('/download-codes') }}" method="get">
+                            @csrf
+                            <input type="hidden" name="codes" value="{{ implode(',', $codes) }}">
+                            <button class="download-button" type="submit">Descargar Códigos</button>
+                        </form>
+                    @endif
+                </div>
+            </div>
 
-        <!-- Lista de Torneo -->
-        <div class="tournament-container">
-            <h1>Torneo</h1>
-            <ul>
-                @if (isset($tournamentRecords))
-                    @foreach ($tournamentRecords as $record)
-                        <li>
-                            <strong>Usuario:</strong> {{ $record['name_user'] }}<br>
-                            <strong>Puntuación:</strong> {{ $record['score'] }}<br>
-                            <strong>Código:</strong> {{ $record['code'] }}<br>
-                            <strong>Pagado:</strong> {{ $record['is_code_paid'] ? 'Sí' : 'No' }}
-                        </li>
-                    @endforeach
-                @endif
-            </ul>
+            <div class="col-md-6">
+                <!-- Lista de Torneo -->
+                <div class="tournament-container">
+                    <h2>Torneo</h2>
+                    <ul class="tournament-list">
+                        @if (isset($tournamentRecords))
+                            @foreach ($tournamentRecords as $record)
+                                <li class="tournament-item">
+                                    <strong>Usuario:</strong> {{ $record['name_user'] }}<br>
+                                    <strong>Puntuación:</strong> {{ $record['score'] }}<br>
+                                    <strong>Código:</strong> {{ $record['code'] }}<br>
+                                    <strong>Pagado:</strong> {{ $record['is_code_paid'] ? 'Sí' : 'No' }}
+                                </li>
+                            @endforeach
+                        @endif
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
-    
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
