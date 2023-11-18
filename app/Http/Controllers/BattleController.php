@@ -160,6 +160,6 @@ public function generateCodes(Request $request)
         $codes[] = $code;
     }
 
-    return view('generated_codes', ['codes' => $codes]);
+    return view('generate_codes_form', ['codes' => $codes]);
 }
 }
