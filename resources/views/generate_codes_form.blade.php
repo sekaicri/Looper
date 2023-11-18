@@ -75,26 +75,32 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <form action="{{ url('/generate-codes') }}" method="post">
-            @csrf
-            <label for="quantity">Cantidad:</label>
-            <input type="number" name="quantity" value="1" required>
-            <br>
-            <label for="value">Valor:</label>
-            <input type="number" name="value" value="5" required>
-            <br>
-            <button type="submit">Generar Códigos</button>
-        </form>
+    <form action="{{ url('/generate-codes') }}" method="post">
+        @csrf
+        <label for="quantity">Cantidad:</label>
+        <input type="number" name="quantity" value="1" required>
+        <br>
+        <label for="value">Valor:</label>
+        <input type="number" name="value" value="5" required>
+        <br>
+        <input type="hidden" name="generated_codes" value="{{ implode(',', $codes) }}">
+        <br>
+        <button type="submit">Generar Códigos</button>
+    </form>
 
-        @if (!empty($codes))
-            <h1>Códigos Generados:</h1>
-            <ul>
-                @foreach ($codes as $code)
-                    <li>{{ $code }}</li>
-                @endforeach
-            </ul>
-        @endif
-    </div>
+    @if (!empty($codes))
+        <h1>Códigos Generados:</h1>
+        <ul>
+            @foreach ($codes as $code)
+                <li>{{ $code }}</li>
+            @endforeach
+        </ul>
+        <!-- Botón para descargar los códigos -->
+        <form action="{{ url('/download-codes') }}" method="get">
+            @csrf
+            <input type="hidden" name="codes" value="{{ implode(',', $codes) }}">
+            <button type="submit">Descargar Códigos</button>
+        </form>
+    @endif
 </body>
 </html>

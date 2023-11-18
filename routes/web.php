@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BattleController;
+use App\Http\Controllers\DownloadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/videos', [App\Http\Controllers\VideoController::class, 'show'])->name('video.show');
 
 Route::post('/generate-codes', [BattleController::class, 'generateCodes']);
+
+Route::get('/download-codes', [DownloadController::class, 'downloadCodes']);
