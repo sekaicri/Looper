@@ -116,6 +116,7 @@
                     <ul class="tournament-list">
                         @foreach ($tournamentRecords as $record)
                             <li class="tournament-item">
+                                <strong>Sala:</strong> {{ $record['GameName'] }}<br>
                                 <strong>Usuario:</strong> {{ $record['name_user'] }}<br>
                                 <strong>Ganancia:</strong> $ {{ $record['score'] }}<br>
                                 <strong>Código:</strong> {{ $record['code'] }}<br>

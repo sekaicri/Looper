@@ -186,8 +186,11 @@ private function getTournamentRecords()
         $description = json_decode($record->description);
 
         $code = null;
+        $GameName = null;
+
         if ($description && isset($description->Code)) {
             $code = $description->Code;
+            $GameName = $description->GameName;
         }
 
         $isCodePaid = $this->isCode($code);
@@ -200,6 +203,7 @@ private function getTournamentRecords()
             'score' => $adjustedScore,
             'is_code_paid' => $isCodePaid,
             'code' => $code,
+            'GameName' => $GameName,
         ];
     });
 
