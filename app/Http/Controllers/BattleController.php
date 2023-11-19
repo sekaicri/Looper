@@ -192,9 +192,12 @@ private function getTournamentRecords()
 
         $isCodePaid = $this->isCode($code);
 
+        // Resta el 10% al puntaje original
+        $adjustedScore = $record->score - ($record->score * 0.1);
+
         return [
             'name_user' => $record->name_user,
-            'score' => $record->score,
+            'score' => $adjustedScore,
             'is_code_paid' => $isCodePaid,
             'code' => $code,
         ];
@@ -202,7 +205,6 @@ private function getTournamentRecords()
 
     return $tournamentRecords;
 }
-
 public function markCodeAsPaidB(Request $request)
 {
     $code = $request->input('code');

@@ -117,7 +117,7 @@
                         @foreach ($tournamentRecords as $record)
                             <li class="tournament-item">
                                 <strong>Usuario:</strong> {{ $record['name_user'] }}<br>
-                                <strong>Puntuación:</strong> {{ $record['score'] }}<br>
+                                <strong>Ganancia:</strong> {{ $record['score'] }}<br>
                                 <strong>Código:</strong> {{ $record['code'] }}<br>
                                 <strong>Pagado:</strong> {{ $record['is_code_paid'] ? 'Sí' : 'No' }}
                 
