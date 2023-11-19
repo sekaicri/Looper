@@ -118,7 +118,7 @@
                             <li class="tournament-item">
                                 <strong>Sala:</strong> {{ $record['GameName'] }}<br>
                                 <strong>Usuario:</strong> {{ $record['name_user'] }}<br>
-                                <strong>Ganancia:</strong> $ {{ $record['score'] }}<br>
+                                <strong>Ganancia:</strong> ${{ $record['score'] }}<br>
                                 <strong>Código:</strong> {{ $record['code'] }}<br>
                                 <strong>Pagado:</strong> {{ $record['is_code_paid'] ? 'Sí' : 'No' }}
                 
