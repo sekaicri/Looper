@@ -112,7 +112,7 @@
             <div class="col-md-6">
                 <!-- Lista de Torneo -->
                 <div class="tournament-container">
-                    <h2>Torneo</h2>
+                    <h2>Looper Tournament</h2>
                     <ul class="tournament-list">
                         @foreach ($tournamentRecords as $record)
                             <li class="tournament-item">
