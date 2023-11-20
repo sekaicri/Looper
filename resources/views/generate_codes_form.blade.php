@@ -119,9 +119,9 @@
                                 <strong>Sala:</strong> {{ $record['GameName'] }}<br>
                                 <strong>Usuario:</strong> {{ $record['name_user'] }}<br>
                                 <strong>Ganancia:</strong> ${{ $record['score'] }}<br>
+                                <strong>Looper:</strong> ${{ $record['looper'] }}<br>
                                 <strong>Código:</strong> {{ $record['code'] }}<br>
                                 <strong>Pagado:</strong> {{ $record['is_code_paid'] ? 'Sí' : 'No' }}
-                
                                 @if (!$record['is_code_paid'])
                                     <form action="{{ url('/mark-code-as-paidB') }}" method="post">
                                         @csrf

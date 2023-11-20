@@ -187,6 +187,7 @@ private function getTournamentRecords()
 
         $code = null;
         $GameName = null;
+        $looper = null;
 
         if ($description && isset($description->Code)) {
             $code = $description->Code;
@@ -197,6 +198,7 @@ private function getTournamentRecords()
 
         // Resta el 10% al puntaje original
         $adjustedScore = $record->score - ($record->score * 0.1);
+        $looper = $adjustedScore - $record->score;  
 
         return [
             'name_user' => $record->name_user,
@@ -204,6 +206,7 @@ private function getTournamentRecords()
             'is_code_paid' => $isCodePaid,
             'code' => $code,
             'GameName' => $GameName,
+            'looper' => $looper,
         ];
     });
 
