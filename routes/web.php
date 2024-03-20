@@ -20,6 +20,9 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/avatar-editor', function () {
+    return redirect(asset('AvatarEditor/index.html'));
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
