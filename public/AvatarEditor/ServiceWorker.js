@@ -1,9 +1,9 @@
 const cacheName = "DefaultCompany-AvatarEditor-0.1.0";
 const contentToCache = [
     "Build/AvatarEditor.loader.js",
-    "Build/AvatarEditor.framework.js.br",
-    "Build/AvatarEditor.data.br",
-    "Build/AvatarEditor.wasm.br",
+    "Build/AvatarEditor.framework.js",
+    "Build/AvatarEditor.data",
+    "Build/AvatarEditor.wasm",
     "TemplateData/style.css"
 
 ];
